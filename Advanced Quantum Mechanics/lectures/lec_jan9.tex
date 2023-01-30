@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{physics}
+%\usepackage{mathtools}
+%\usepackage[T1]{fontenc}
+\usepackage{cancel}
+
+\geometry{margin=2.5cm, top=1cm}
+\author{Aayush Arya}
+\title{}
+\date{\today}
+
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+
+\begin{document}
+	\maketitle
+	{
+		%\vspace{-14pt}
+		%\footnotesize{$^\dagger$ Isaac Newton was born exactly 380 years ago. He solved the Brachistochrone problem in one night. Sure, I can solve at least this exercise sheet in one night.}\\
+	}
+	\hrule
+	\begin{center}
+		Lecture Notes\\
+		Advanced Quantum Mechanics
+	\end{center}
+	\hrule
+	
+	\section*{Quantization of the (real) scalar field}
+	
+	\[ \lag[\phi, \partial_\mu \phi] = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2}\kappa^2\phi^2 - V(\phi)   \]
+	
+	The classical physics that emerges from this Lagrangian is that we have wave solutions of the field that oscillate in the time. And the fields obey the equation of motion
+	
+	\[ \Box \phi + \kappa^2\phi + V'(\phi) = 0\]
+	
+	where $\Box = \partial^2$. For $V = 0$ the solutions look like $e^{i(\vec{k}\cdot \vec{x} - \omega_kt)}$ with the dispersion relation $\omega_k = c\sqrt{\vec{k}^2 + \kappa^2}$
+		
+		
+		We reached a certain form for the Hamiltonian of lattice. We had this pair of degrees of freedom for $\phi_{\vec{x}}$ and the canonically conjugate field (momenta) $\pi_{\vec{x}'}$ with the commutator relations $[\phi_{\vec{x}}, \pi_{\vec{x}'}] = i\delta^3(\vec{x} -\vec{x}')$
+			
+			after returning from the lattice to the continuum\footnote{In our notation, the fields with the position vector in the subscript, e.g. $\phi_{\vec{x}}$ shall be used to represent the lattice fields}, we found
+			
+			\[ H= \int d^3 x \left( \frac{c^2}{2} \pi(\vec{x})^2) + \frac{1}{2}(\vec{\nabla})^2 + \frac{\kappa^2}{2}\phi_{\vec{x}}^2 + V(\phi_{\vec{x}}) \right)\]
+			
+			
+			with conjugate momentum $\pi(\vec{x}) = \frac{1}{c^2}\dot{\phi}$
+			
+			\subsection*{Direct derivation of the Hamiltonian} is to introduce the \[\pi(x) = \frac{\partial \lag}{\partial \dot{\phi}}\]
+			
+			and the \[ H = \int d^3x \left( \pi(\vec{x})\dot{\phi}(\vec{x}) - \lag[\phi, \partial_\mu\phi] \right)\]
+			
+			$\rightarrow$ Now, what does this quantum field theory describe?
+			
+			\subsection*{Expansion of the field in plane waves}
+			\[ \phi_{\vec{x}} = \sum_{\vec{x}} g_{\vec{k}} \left( a_{\vec{k}} e^{i\vec{k}\cdot\vec{x}} + a^\dagger e^{-i\vec{k}\cdot\vec{x}} \right)\]
+			with $g_{k} \in \mathbb{R}$ being just a normalization factor for the operators
+			
+				
+			$\rightarrow$ The sum is a discrete one; we're still working inside the box $L^3$. And also, this is in the Schrodinger picture ($\vec{k}$ is the 3-component one; we haven't introduced the time dependence yet).
+
+			And the conjugate momentum \[ \pi(\vec{x}) = \frac{-i}{c^2}\sum_{\vec{k}} \omega_k \left( a_{\vec{k}} e^{i\vec{k}\cdot\vec{x}} - a^\dagger e^{-i\vec{k}\cdot\vec{x}} \right) \]
+			
+			If we want to have commutator relations for then we need to have separate expressions for the creation/annihilation operators. The trick is a Fourier transform. 
+			
+			\[ \int d^3x e^{-i\vec{k}'\cdot\vec{x}} \phi(x) = L^3 g_{k'} \left( a_{\vec{k}'} + a_{\vec{k}'}^\dagger \right)\]
+			
+			from the other (conjugate field), we have 
+			\[ \int d^3 x e^{-\vec{k}'\cdot \vec{x}}\pi(\vec{x}) = -\frac{i}{c^2} g_{k'}\omega_{k'} \left(a_{k'} - a_{k'}^\dagger\right)\]
+			
+			from a linear combination of these two expressions, we can isolate $a$ and $a^\dagger$
+			
+			\[ a_k = \frac{1}{2L^3 g_k} \int d^3 x e^{-i\vec{k}\cdot \vec{x}} \left( \phi(\vec{x}) + \frac{ic^2}{\omega_k}\pi(\vec{x}) \right)\] and $a^\dagger$ is obviously just the complex conjugate of this.
+			
+			The commutator \[ [a_{\vec{k}} , a_{\vec{k}'}^\dagger] = \frac{1}{(2L^3)^2 g_k g_{k'}} \int d^3 x \int d^3 y e^{i(\vec{k}'\cdot \vec{x}' - \vec{k}\cdot \vec{x} )} \left[ \phi_{\vec{x}'} - \frac{ic^2}{\omega_{k'}}\pi(\vec{x'}) , \phi_{\vec{x}} + \frac{ic^2}{\omega_{k}}\pi(\vec{x})\right] \]
+			
+			the commutator inside is $ c^2 \hbar\ \delta^3(\vec{x}- \vec{x}') \left(\frac{1}{\omega_{k'}} + \frac{1}{\omega_{k}}\right)$. The delta function will take away one of the integrals.
+			
+			And then we'll have $\int d^3 x\ e^{i(\vec{k} -\vec{k'})\vec{x}}$ giving us another delta function $L^3 \delta(\vec{k} - \vec{k}')$
+			
+			by choosing an appropriate normalization $g_k$, then this simplifies to \begin{center}
+				\boxed{[a_k, a_{k'}^\dagger] = \delta(\vec{k} - \vec{k}')} 
+			\end{center}
+			
+			and it can also be shown that $ [a_k, a_{k'}] = [a_k^\dagger, a_{k'}^\dagger] = 0$ 
+			
+			\subsection*{Hamiltonian in terms of the $a_k$ and $a_k^\dagger$}
+			
+			$\rightarrow$ at this point I stopped noting down some stuff because I already know it and the algebra is boring. The way $\pi(x)^2$ term introduced a common $\omega_k^2$, the gradient term brings $k^2$ outside
+			
+			we finally get \[ H = \sum_{\vec{k}} g_k^2L^3/c^2 \omega_k^2 \left( a_ka_k^\dagger + a_k^\dagger a_k\right)\] writing $a_k a_k^\dagger = a_k^\dagger a_k + 1$ gives us
+			
+			\[ H = \sum_{\vec{k}} \hbar \omega_k (a_k^\dagger a_k + \frac{1}{2})\]
+			
+			Note that what we have contains the number operator $n_{\vec{k}}\ket{n} = n \ket{n}$
+	
+			Energy of one quantum of mode $\vec{k}$
+		
+			\[ \mathcal{E}_k = \hbar \omega_k = \hbar c \sqrt{\vec{k}^2 + \kappa^2} = c\sqrt{\vec{p}^2 + (\hbar k)^2}\]
+			and by comparing with the relativistic dispersion relation $E = c\sqrt{\vec{p}^2 + m^2 c^2}$, we get the mass of the particle \[ m = \frac{\hbar k}{c}\]
+			
+			
+			
+			when $\phi_{\vec{x}}$ acts on the vacuum $\ket{0}$ then it creates a linear superposition of one-particle states $\ket{\delta^k_{k'}}$
+			\[\phi_{\vec{x}} \ket{0} = \sum_{\vec{k}} e^{-i\vec{k}\cdot \vec{x}} \ket{\delta^k_{k'}} \]
+			
+			When there's a non-linear potential, say $V(\phi(\vec{x})) = \phi^4 $ there's the possibility of inelastic scattering.
+			
+			..\\
+			
+			%We'll now also turn these expressions into infinite volume integrals
+			
+			
+\end{document}

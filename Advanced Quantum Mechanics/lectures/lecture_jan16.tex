@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{unicode-math}
+%\usepackage{mathtools}
+%\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{graphicx}
+
+\geometry{margin=2.5cm, top=1cm}
+\author{Aayush Arya}
+\title{}
+\date{January 16, 2023}
+
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+
+\begin{document}
+	\maketitle
+	
+	\hrule
+	\begin{center}
+		Lecture Notes\\
+		Advanced Quantum Mechanics
+	\end{center}
+	\hrule
+	
+	\section*{The Lorentz Group}
+	
+	\[ x'^{\mu} = \Lambda^\mu_\nu x^\nu \quad \text{(homogenous Lorentz transf.)}\]
+
+with \[ \Lambda^T g \Lambda = g, \quad g = \text{diag}(1, -1, -1, -1)	\]
+	
+	The proper orthochronous Lorentz group $\lag^+$ is a continuous, connected, 6-parameter group  (proper: $\det \Lambda = + 1$, orthochronous: $\Lambda^0_0 \geq 1 $)\\
+	
+	3 rotation directions, 3 boost directions.
+	
+	\subsection*{Infinitesimal transformations}
+
+	\begin{align*}
+		\Lambda_R(\alpha, \hat{e_z}) & = \begin{pmatrix}
+			1 & 0 & 0 & 0\\
+			0 & 1 & -\alpha & 0\\
+			0 & \alpha & 1 & 0\\
+			0 & 0 & 0 & 1\\
+		\end{pmatrix}\\	
+	& = \mathbb{1} + \alpha \begin{pmatrix}
+		0 & 0 &0& 0\\
+		0 & 0 & -1 & 0\\
+		0 & 1 & 0 & 0 \\
+		0 & 0& 0& 0\\
+	\end{pmatrix}
+	\end{align*}
+	 
+
+where the matrix on the right is the generator of rotations around the z-axis.
+
+\begin{align*}
+	\Lambda_B (\eta, \hat{e_1}) & \simeq \begin{pmatrix}
+		1 & \eta & 0 & 0\\
+		\eta & 1 & 0 & 0\\
+		0 & 0 & 1 & 0\\
+		0 & 0&  0 & 1\\
+	\end{pmatrix}\\
+		& = \mathbb{1}_{4\times 4} + \eta \begin{pmatrix}
+		0 & 1 & 0 & 0\\
+		1 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0\\
+	\end{pmatrix}
+\end{align*}
+
+
+and here it serves as a generator  of a boost along the x-axis.
+
+In general \[ \Lambda^\alpha_\beta = \delta^\alpha_\beta - \frac{i}{2} \omega_{\mu\nu} (J^{\mu\nu})^\alpha_\beta\]
+
+where the $\omega_{\mu\nu} = - \omega_{\nu\mu}$ has the parameters of the infintesimal Lorentz transformation (6 indep. parameters)
+
+and $(J^{\mu\nu})^\alpha_\beta$ is the corresponding generator to $\omega_{\mu\nu}$. \[ \exists\ \text{6  indep. generators} (J^{\nu\mu} = - J^{\mu\nu})\]
+
+
+so we could have also written \[ \frac{1}{2} \sum_{\mu,\nu} \equiv \sum_{\mu < \nu} S_{\{\mu, \nu\}}\]	
+
+
+so what is this $(J^{\mu\nu})^\alpha_\beta$?
+
+\[ (J^{\mu\nu})^\alpha_\beta = i(g^{\mu\alpha} \delta ^\nu_\beta - g^{\nu\alpha} \delta^\mu_\beta) \]
+
+\[ J^{12} = i \begin{pmatrix}
+	0 & 0 & 0 & 0\\
+	0 & & &0\\
+	0 & & & 0\\
+	0 & 0 & 0 & 0
+\end{pmatrix}\]
+
+and the $2\times2$ block is what we have to figure out
+
+\[ (J^{12})^\alpha_\beta =
+ i(g^{1\alpha} \delta^{2}_{\beta} - g^{2\alpha} \delta^1_\beta )\]
+ 
+ 
+ the box should come out as \[\begin{matrix}
+ 	0 & 1 \\
+ 	-1 & 0\\
+ \end{matrix}\]
+ 
+ 
+ In $ J^{01}$ only the $(0, 0) \rightarrow (1, 1)$ corner of the matrix gets to be non-zero, and the rest are zero
+ 
+ \[ J^{01} = i \begin{pmatrix}
+ 	0 & +1 & 0 & 0\\
+ 	+1 & 0 & 0 & 0\\
+ 	0 & 0 & 0& 0\\
+ 	0 & 0 & 0& 0\\
+ \end{pmatrix}\]
+ 
+ 
+ what does the $\omega_{12}$ correspond to? It corresponds to \[\omega_{12} = \alpha \quad \text{for the rotation around the z-axis}\]
+ 
+ \vspace{-16pt}
+ \[ \omega_{01} = \eta \quad \text{for the boost along x-axis}\]
+ 
+ In special relativity when we have two rotations $\rightarrow$ equiv. to just a rotation.
+ 
+ The composition laws of Lorentz transformations are encoded in the commutation relations of the generators $J^{\mu\nu}$
+ 
+ 
+ \[ [ J^{\mu\nu}, J^{\rho\sigma}] = i(g^{\nu\rho}J^{\mu\sigma} - g^{\mu\rho} J^{\nu\sigma} - g^{\nu\sigma} J^{\mu\rho} + g^{\mu\sigma} J^{\nu\rho})\]
+ 
+ where the $J$'s are $4\times 4$ matrices and $g$'s are the coefficients.
+ 
+ \[ \Lambda_R(-\alpha, \hat{e_z}) \Lambda_B(\eta, \hat{e_1}) \Lambda_R(\alpha, \hat{e_z}) \]
+ 
+ these can be written as \[ \left( 1 + \frac{i\omega_{12}}{2}J^{12} \right) \left( 1 - \frac{i}{2} \omega_{01}J^{01}\right)  \left(1 - \frac{i}{2} \omega_{12} J^{12}\right) \]
+ 
+ which is also equal to \[ \mathbb{1} - \frac{i}{2}\omega_{01}J^{01} + \frac{1}{4} \omega_{12}\omega_{01} \underbrace{(J^{12} J^{01} - J^{01}J^{12})}_{\text{commutator}\ [J^{12}, J^{01}]} + \mathcal{O}(\omega_{12}^2)\]
+ 
+ where the underbraced part is exactly the commutator $[J^{12}, J^{01}]$
+ 
+ all these group properties are encoded in \\
+ 
+ $\rightarrow$ A boost and a rotation commute only if the axis of the rotation is also the direction of the boost. The boost doesn't affect the transverse plane.\\
+
+	This sort of transformation law for the field $\psi$ is called the \textit{representation} of the Lorentz group.
+	
+	These are also relevant in condensed matter physics, when there are symmetries in a crystal, for instance. When there's a finite number of symmetry tranformations you can do, you come up with a \textit{representation} for a \textit{discrete group}.
+	
+	\section*{Representation of the Lorentz group}
+	
+	\[ \psi_\alpha '(x') = \mathcal{M}(\Lambda)_{\alpha\beta}\ \psi'_\beta (x')\]
+  This expresses that the field $\psi$ is a representation of the Lorentz group\\
+  
+	suppose $\Lambda = \Lambda_1 \Lambda_2$ (composition of 2 Lorentz tranformations). If you do transformation $\Lambda_2$
+	
+	\[ \psi(x) \xrightarrow{\Lambda_2} \mathcal{M} (\Lambda_2) \psi(x) \xrightarrow{\Lambda_1} M(\Lambda_1) (M(\Lambda_2)\psi(x))\]
+	
+	that's the group property (the result of the composition is again a Lorentz transformation).
+	
+	This is equiv. to 
+	\[ \psi(x) \xrightarrow{\Lambda} M(\Lambda) \psi(x)\]
+	
+	The consistency requires that \[ M(\Lambda_1\Lambda_2) \equiv M(\Lambda_1) M(\Lambda_2)\]
+
+
+	We have seen two examples of $\mathcal{M}(\Lambda)$ 
+	
+	\begin{itemize}
+			\item if $\mathcal{M}(\Lambda) = 1$ (works for scalars) then that's called the \text{trivial representation}\footnote{A trivial representation exists for every group} of the Lorentz group
+			
+			\item $\mathcal{M}(\Lambda) = \Lambda$: the fundamental representation of the Lorentz group
+			
+	\end{itemize}
+
+	the dimension of the representation is the (minimal) number of fields it has, in this case, 4-dimensional.\\
+	
+	\boxed{\rightarrow \text{These will not do to describe the electron}}\\
+	
+	For an infinitesimal transformation, we can expect that \[ \mathcal{M}(\Lambda) = \mathbb{1} - \frac{i}{2} \omega_{\mu\nu} \bar{\mathcal{J}}^{\mu\nu} \] 
+
+	$\rightarrow$ the $\bar{\mathcal{J}}^{\mu\nu}$ have the same commutation relations as the $J^{\mu\nu}$'s\\
+
+	Now we come to one thing that we know about the electron (spin-1/2). Spin is about angular momentum, which has to do with spatial rotations. So we know something about how electron transforms under rotations just from that it has spin-1/2.\\
+
+	For rotations, there's a connection between $J^{ij}$ and the angular momentum
+	
+	\[ J^{ij} = \frac{1}{\hbar}\epsilon^{ijk} S^{k}\]
+
+for angular momenta, commutation relations: \[ [S^i, S^j] = i \hbar \epsilon^{ijk} S^k\]
+
+	In spin-1/2 we use Pauli matrices. \[ S^k = \hbar \frac{\sigma^k}{2}\]
+	
+	where the $\sigma^k$ are Pauli matrices
+	
+	\[ \sigma^1 = \begin{pmatrix}
+		0 & 1 \\ 1 & 0
+	\end{pmatrix} \quad \sigma^2 = \begin{pmatrix}
+	0 & -i \\ i & 0
+\end{pmatrix} \quad \sigma^3 = \begin{pmatrix}
+1 & 0 \\ 0 & -1
+\end{pmatrix}\]
+
+For the rotations, this already tells us what the answer is of what the $\bar{\mathcal{J}}^{ij}$ should be. When it came to including boosts, it was Dirac who had the brilliant idea
+
+\section*{Dirac construction of a representation for the electron}
+
+Introduce 4 matrices $\gamma^\mu,\ \mu \in \{0, 1, 2,\ ..\}$ satisfying that the anti-commutator
+
+\[ \{ \gamma^\mu, \gamma^\nu \} = \gamma^\mu\gamma^\nu + \gamma^\nu\gamma^\mu =  (2g^{\mu\nu})\mathbb{1}_{n\times n} \]
+
+This is essentially saying the square of the matrix should be the unit matrix.
+
+If we can find such a matrix, then the claim is \[ \bar{\mathcal{J}}^{\mu\nu} := \frac{i}{4} [\gamma^\mu, \gamma^\nu]\]
+
+in other words, they can serve as the generators of the representations of the Lorentz group.
+
+
+And it turns out that minimal size of the matrices is 4. This is a coincidence, because in d-dimensions, it is $2^{d/2}$ (that is to say, in 8-dimensions, it would be $2^4 = 16$).
+
+
+\[ J^{ij} = \epsilon^{ijk} \begin{pmatrix}
+	\sigma^k & 0 \\ 0 & \underbrace{\sigma^k}
+\end{pmatrix} \]
+where the underbraced component corresponds to the \textit{anti-particle}
+\end{document}
+

@@ -1,0 +1,241 @@
+% compile with XeTeX
+\documentclass[11pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage[regular]{newcomputermodern}
+\usepackage{unicode-math}
+%\setmathfont[range=\mathbb]{TeX Gyre Termes Math}
+%\usepackage{mathtools}
+%\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\geometry{margin=2.5cm, top=1cm}
+\author{Aayush Arya}
+\title{}
+\date{January 26, 2023}
+
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+
+\begin{document}
+	\maketitle
+	
+	\hrule
+	\begin{center}
+		Lecture Notes\\
+		Advanced Quantum Mechanics
+	\end{center}
+	\hrule 
+	
+	\vspace{11pt}
+	
+	\subsection*{The Dirac equation}
+	\[ (i\gamma^\mu \partial_\mu - \kappa)\psi(x) = 0\]
+		
+		\begin{itemize}
+			\item derives from the Lagrangian density $\lag = \bar{\psi} (i\gamma^\mu \partial_\mu)\psi$
+			\item implies the Klein-Gordon equation, $(\Box + \kappa^2) \psi = 0$
+		\end{itemize}
+		
+		$k^\mu$ and $p^\mu$ are two four vectors
+			\begin{align*}
+				p_\mu \gamma^\mu k_\nu \gamma^\nu &= \frac{1}{2}(p_\mu k_\nu \gamma^\mu \gamma^\nu + p_\nu k_\mu \gamma^\nu \gamma^\mu)\\
+				    & \text{we can replace}\ \gamma^\mu \gamma^\nu = -\gamma^\nu \gamma^\mu + 2g^{\mu\nu} \mathbb{1}_{4\times 4}
+			\end{align*}
+		which then takes the neat expression
+		%\vspace{-11pt}
+		\begin{center}
+			\boxed{(p\cdot \gamma) (k\cdot \gamma) = (p\cdot k) \mathbb{1}_{4\times 4}}
+		\end{center}
+	\subsection*{Hamiltonian for the Dirac field: $\bar{\psi}\equiv \psi^+\gamma^0$}
+	
+	\[ \frac{\partial \lag}{\partial \psi_\alpha} = \frac{1}{c} \psi^+_\alpha = \Pi_\alpha, \quad \underbrace{(\ ... \ )}_{\bar{\psi}} \begin{pmatrix} .. & . & . & . \\ : &  & & : \\
+			. &  & & .\\ 
+			. & & & .\end{pmatrix}
+		\underbrace{\begin{pmatrix}
+				: \\ .\\. \\.
+		\end{pmatrix}}_{\psi} \]
+	
+	
+	\begin{align*}
+		\ham &= \int d^3 \vec{x} \left( \frac{i}{c}\psi^\dagger_\alpha \dot{\psi}_\alpha - \lag \right)\\
+			& = \int d^3 \vec{x} \left( \cancel{ \frac{i}{c}\psi^+ \dot{\psi} }- (  \cancel{ \bar{\psi}i\gamma^0 \partial_0\psi } + \bar{\psi} i \gamma^k \partial_k \psi - \kappa \bar{\psi} \psi) \right)\\
+		\ham &= \int d^3 \vec{x}\ \bar{\psi} (-i\vec{\gamma}\cdot \vec{\nabla} + \kappa)\psi, \quad \vec{\gamma} = \begin{pmatrix}
+			\gamma^1 \\ \gamma^2 \\ \gamma^3
+		\end{pmatrix} = -\vec{\gamma}^+
+	\end{align*}
+	
+	
+	
+	\section*{Solving the Dirac equation in vacuum}
+	
+	First, note that with the {\it ansatz} \[ \psi(x) = u(k) e^{-ik\cdot x},\quad k\cdot x = \vec{k}\cdot\vec{x} - \underbrace{k^0 ct}_{\omega_k t} \]
+	
+	\[ \omega_k = \pm c\sqrt{\vec{k}^2 + \kappa^2 }\]
+	which is to say
+	
+	\begin{center} \boxed{ k^0 = \pm \sqrt{\vec{k}^2 + \kappa^2} }\end{center}
+	
+	
+	The case $k^0 = + \sqrt{\vec{k}^2 + \kappa^2}$
+	
+	\[ (i\gamma^\mu\partial_\mu - \kappa) u(k) e^{-ikx} = 0\]
+	
+	Given that $\partial_\mu e^{-ikx} = -ik_\mu e^{-ikx}$
+	
+	\[ \Rightarrow (\gamma^\mu k_\mu - \kappa) u(k) \cancel{e^{-ikx}} = 0\]
+	
+	rearranging this
+	\[ (k \cdot \gamma) u(k) = \kappa u(k)\]
+	
+	That is to say, $u(k)$ is an eigenvector of $k\cdot\gamma$ with eigenvalue $\kappa$
+	
+	\subsection*{Strategy I: Problem for $k=0$}
+	i.e. $k^0 = \kappa$
+	
+	Apply a boost to the obtain the solution for general $\vec{k}$. So here $k\cdot \gamma^\mu = k^0\gamma^0$
+	
+	\begin{align*}
+		\kappa \gamma^0 u(k) &= \kappa u(k)\\
+		\gamma^0 u(k) &= u(k)
+	\end{align*}
+	In our choice of Dirac matrices
+	
+	\[ \gamma^\mu = \begin{pmatrix}
+		0 & \sigma^\mu \\
+		\bar{\sigma}^\mu & 0
+	\end{pmatrix}, \sigma^\mu = \begin{pmatrix}
+	\mathbb{1}_{1\times 1} \\
+			\vec{\sigma}
+\end{pmatrix}\ 
+		\text{and}\ \bar{\sigma}^\mu = \begin{pmatrix}
+		\mathbb{1}_{1\times1}\\ -\vec{\sigma}
+\end{pmatrix}\]
+	
+	\[ \gamma^0 \begin{pmatrix}
+		a \\ b
+	\end{pmatrix} = \begin{pmatrix}
+	b \\ a
+\end{pmatrix}\]
+	
+	Eigenvectors with eigenvalue $+1$: $(k\cdot \gamma)U = kU$
+	
+\[\begin{pmatrix}
+		a \\ a
+	\end{pmatrix} \quad \forall a\in \mathbb{C}^2
+\]
+e.g. $a= \begin{pmatrix}
+	1 \\ 0
+\end{pmatrix}, a= \begin{pmatrix}
+0\\ 1
+\end{pmatrix}$ and $\begin{pmatrix}
+	a \\ -a 
+\end{pmatrix}$ have eigenvalue $-1,\ \forall a\in\mathbb{C}^2$\\
+
+
+$\Rightarrow$ solution for $\vec{k} = 0$,
+
+\[	  u(\vec{0}) = \sqrt{\kappa}\begin{pmatrix}
+	\zeta \\ \zeta
+\end{pmatrix}, \quad \zeta \in \mathbb{C}^2	 \]
+
+Choose the normalization $\zeta^+\ \cdot \zeta = 1$
+
+Boost that brings $\begin{pmatrix}
+	k\\ \vec{\sigma}
+\end{pmatrix}$ into the vector $\begin{pmatrix}
+	k^0 = \sqrt{\vec{k}^2 + \kappa^2}\\ \
+			\vec{k}
+\end{pmatrix}$ is
+
+
+		\[ \Lambda^\mu_\nu = \begin{pmatrix}
+			\cosh \eta & 0 & 0 & \sinh \eta\\
+			0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0\\
+			\sinh \eta & 0 & 0 & \cosh \eta
+		\end{pmatrix}\]
+
+	$$k^\mu = \begin{pmatrix}
+		k^0 \\ 0 \\ 0 \\ k^3
+	\end{pmatrix} = (\Lambda^\mu_\nu)\begin{pmatrix}
+	\kappa \\ 0 \\ 0 \\ 0
+\end{pmatrix} = \begin{pmatrix}
+		\kappa \cosh \eta\\ 0 \\ 0 \\ \kappa \sinh \eta
+\end{pmatrix}$$
+
+So this boost turns our rest frame wavevector with $k^0 = \kappa$ into a more general one
+
+\[ \Rightarrow k^0 +  \k^3 = \kappa e^\eta\    \quad (\because\ \cosh x + \sinh x = e^{x})\]
+
+and \[ k^0 - k^3 = \kappa e^{-\eta} \]
+
+	So now e have to transform our spinor $u$ in a way that ... We know how it transforms, it's not with the matrix $\Lambda^\mu_\nu$, but with the spinor representations (using the matrices $\S^{\mu\nu}$).
+	
+	\subsection*{Transformation of the spinor}
+	
+		\[ \psi'(x') = \exp(-\frac{i}{2} 
+		\omega_{\mu\nu} S^{\mu\nu})\psi(x)\]
+	
+	
+	Here, we pick $\omega_{03} = -\omega^{30} = \eta$, all other $\omega_{\mu\nu}$ vanish.
+	
+	\[ \Rightarrow \exp \left(-\frac{i}{2} \omega_{\rho\sigma} S^{\rho \sigma}\right) = \exp(-i\eta\delta^{03}) = \exp\left(-\frac{\eta}{2}\begin{pmatrix}
+		\sigma^3 & 0\\ 0 & -\sigma^3
+	\end{pmatrix}\right)\]
+
+which is $$ = -\frac{i}{2}\begin{pmatrix}
+	\sigma^3 & 0 \\ 0 & - \sigma^3
+\end{pmatrix}$$
+
+Note that exponentiating such a complicated $4\times 4$ matrix here reduces to exponentiating a $2\times2$ matrix because in $\exp \lambda = \sum_k^\infty \frac{\lambda^n}{
+n!}$ the different matrices don't talk to each other \footnote{
+	The even powers give $\mathbb{1}$ and the odd powers give $\sigma^3$\\
+
+\text{if} $A^2 = \lambda\mathbb{1}$, $$e^{A} = \left( \sum_{\text{even}} \lambda^{n} \right) \mathbb{1} + \left(\sum_{\text{odd}} \frac{\lambda^{(n-1)}}{n!}A \right)= \cosh \lambda \mathbb{1} + \frac{1}{\lambda}\sinh \lambda \cdot A$$
+
+if $A = \sqrt{\lambda} \mathbb{1} e^{\sqrt{\lambda}}$...
+
+	}
+	
+	\[ \text{the exponential becomes}\ = \begin{pmatrix} \frac{\mathbb{1}-\sigma^3}{2}e^{i\eta}  + \frac{\mathbb{1}+\sigma^3}{2}e^{-i\eta}  & 0 \\
+		 0 &  \frac{\mathbb{1}-\sigma^3}{2}e^{i\eta} +  \frac{\mathbb{1}+\sigma^3}{2}e^{-i\eta} \end{pmatrix}\]
+	
+	
+	So, 
+	
+	\[ \exp\left(-\frac{i}{2} \omega_{\rho\sigma} S^{\rho\sigma} \right) 
+		= 	\frac{1}{\sqrt{k}}
+	\begin{bmatrix}
+		 \begin{pmatrix}
+			\frac{\mathbb{1}-\sigma^3}{2}\sqrt{k^0 + k^3}  - \frac{\mathbb{1}+\sigma^3}{2}\sqrt{k^0 - k^3} 
+		\end{pmatrix} & 0 \\
+		
+		0 & \begin{pmatrix}
+			\sqrt{k^0 + k^3} \frac{\mathbb{1} - \sigma^3}{2} - \sqrt{k^0 - k^3}\left(\frac{1 + \sigma^3}{2}\right)
+		\end{pmatrix}
+	\end{bmatrix}
+	\]
+	
+	What does the equation really say? These matrices (e.g. $\sigma^3$) are projectors. Which means if you square the matrix, you get the same matrix. 
+	
+	\begin{align*}
+	\sigma^3 = \begin{pmatrix}
+		1 & 0 \\ 0 & -1
+	\end{pmatrix}, &\ \frac{1+\sigma^3}{2},\ \text{projects onto subspace with eigenvalue } +1\\
+	&\ \frac{1-\sigma^3}{2},\ \text{projects onto subspace with eigenvalue } -1
+	\end{align*}
+
+		\textbf{General k}: $$u(k) = \sqrt{k} \begin{pmatrix}
+			\sqrt{k^0 \mathbb{1} - \vec{k}\vec{\sigma}}\\
+			\sqrt{k^0\mathbb{1} + \vec{k}\vec{\sigma}}
+		\end{pmatrix} = \begin{pmatrix}
+		\sqrt{k\cdot \sigma}\\ \sqrt{k\cdot \bar{\sigma}}
+	\end{pmatrix}$$
+
+\end{document}
+

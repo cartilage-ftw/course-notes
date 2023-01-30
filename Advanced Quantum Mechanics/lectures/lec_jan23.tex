@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[regular]{newcomputermodern}
+%#\usepackage{unicode-math}
+%\setmathfont[range=\mathbb]{TeX Gyre Termes Math}
+%\usepackage{mathtools}
+%\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\geometry{margin=2.5cm, top=1cm}
+\author{Aayush Arya}
+\title{}
+\date{January 23, 2023}
+
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+
+\begin{document}
+	\maketitle
+	
+	\hrule
+	\begin{center}
+		Lecture Notes\\
+		Advanced Quantum Mechanics
+	\end{center}
+	\hrule 
+	
+	\vspace{11pt}
+	Transforming $\psi^\dagger(x)$ \[ \psi'(x') = \left(1 - \frac{i}{2}\omega_{\mu \nu}S^{\mu\nu}\right) \psi(x)\]
+	
+	\[ \psi'^\dagger (x') = \psi^\dagger(x)\left(1 + \frac{i}{2} \omega_{\mu\nu}S^{\mu\nu \dagger} \right)\]
+
+	\begin{align*}
+		S^{\mu\nu}: \text{Hermitian for rotations}&\ (S^{ij};\ i,j > 0)\\
+		 \text{and anti-Hermitian for boosts}&\ (S^{0j}\  \text{for}\ j > 0)\\
+		 \text{Property:}\ S^{\mu\nu\dagger} \rightarrow \gamma^0 S^{\mu\nu} \gamma^0 &\ \quad \text{(Why?)}
+	\end{align*}
+	
+	So, \[\psi'^\dagger(x')\gamma^0 = \psi^\dagger(x) \left(1 + \frac{i}{2}\omega_{\mu \nu}\gamma^0 S^{\mu\nu}\gamma^0 \right) \gamma^0\]
+	
+	\[ \bar{\psi}'(x') = \psi^\dagger (x) \left( \gamma^0 + \frac{i}{2}\omega_{\mu\nu}\gamma^0 S^{\mu\nu}\right)\]
+	
+	%\section*{The Lorentz Group}
+	
+	
+	
+	\[ \bar{\psi}'(x') = \bar{\psi}(x) \left( \mathbb{1} + \frac{i}{2}\omega_{\mu\nu} S^{\mu\nu}\right) \]
+	
+	The product
+	\begin{align*}
+		\bar{\psi}'(x') \psi'(x') &= \bar{\psi}(x) \left(\mathbb{1} + \frac{i}{2}\omega_{\mu\nu} S^{\mu\nu} \right) \left( \mathbb{1} - \frac{i}{2}\omega_{\mu\nu}S^{\mu\nu} \right)\\
+				& \sim \bar{\psi}(x)\psi(x)\\
+		(\bar{\psi}\psi)'(x') &= (\bar{\psi}\psi) (x)
+	\end{align*}
+
+Therefore $\bar{\psi}\psi$ transforms like a scalar field.
+
+Transformation of $\bar{\psi}(x)\gamma^\mu \psi(x)$ under Lorentz transform\\
+
+Transformed: $\bar{\psi}'(x')\gamma^\mu\psi'(x')$ use the transformations if ... (I didn't understand this part)
+
+The commutator for $S^{\mu\nu}$ and $\gamma^\mu$ pops up (figure it out)
+
+Takes up a form,
+\[ \bar{\psi}(x') \gamma^\mu \psi(x') = \left(\delta^\mu_\sigma - \frac{i}{2}\omega_{\lambda\nu}(J^{\lambda\nu})^\mu_\sigma\right)\bar{\psi}(x)\gamma^\mu \psi (x) \]
+
+same transformation is used for vector field \\
+
+$\bar{\psi}(x)\gamma^\mu \partial_\mu \psi(x)$ will transform like a scalar field.\\
+
+\begin{align*}
+	\text{Covariant vectors:}\ x'_\mu =&\ (\Lambda^{-1})^\nu_\mu x_\nu\\
+	\text{Contra:}\ x'^\mu =&\ \Lambda^\mu_\nu x^\nu\\
+	x'_\mu x'^\mu =&\ x_\mu x^\mu, \quad \left[\because\ (\Lambda^{-1})^\nu_\mu (\Lambda)^\mu_\lambda = \delta^\nu_\lambda\right] 
+\end{align*}
+
+	 \[\frac{\partial}{\partial x'^\mu} = \left((\Lambda^{-1})^\nu_\mu \frac{\partial}{\partial x^\nu}\right)\]
+\[ \hookrightarrow \text{this transformation was missing}\]
+	
+\subsection*{Constructing a Lagrangian}
+For a scalar field we used $\phi \phi^*$ (i.e. $\partial^\mu \phi^* \partial_\mu\phi$). For the fields under a Lorentz transformation 
+
+\begin{align*}
+	\lag =& i\bar{\psi}\gamma^\mu\partial_\mu\psi - k\bar{\psi}\psi\\
+	& \hookrightarrow \bar{\psi}\gamma^0 \frac{1}{c}\frac{d\psi}{dt} + \bar{\psi}\vec{\gamma}\cdot \nabla \psi\\
+	\text{with}\ & \vec{\gamma} = \begin{pmatrix}\gamma^1 \\ \gamma^2 \\ \gamma^3 \end{pmatrix} \\
+\end{align*}
+
+$\gamma^0 \rightarrow$ Hermitian (time-like part)\\
+$\vec{\gamma} \rightarrow$ anti-Hermitian (spatial part)
+
+
+\begin{align*}
+	\gamma^0 = &\ \gamma_0\\ \gamma_\mu =&\ -\gamma^\mu \\
+	\gamma_\mu =&\ g_{\mu\nu} \gamma^\nu
+\end{align*}
+
+the metric tensor transforms like the Dirac matrices\\
+
+Equation of motion for the constructed lagrangian of $\psi$
+
+\[ \partial_\mu\left(\frac{\partial \lag}{ \partial(\partial_\mu\phi_l)}\right) = \frac{\partial\lag}{\partial \phi_l}, \quad l=1, .. N\]
+
+We are treating $\psi$ and $\bar{\psi}$ as independent variables
+
+So, for the Lagrangian,
+
+\[ (i\gamma^\mu \partial_\mu - \kappa) \psi(x) = 0 \rightarrow \text{Dirac equation}\]
+
+The equation for $\bar{\psi}$ turns out to be 
+\[ \bar{\psi}(x) (i\gamma^\mu\partial_\mu + \kappa) = 0\]
+$$\hookrightarrow \text{Derive this}$$
+(Just multiply Dirac equation by $\gamma^0$ and pull out a $\gamma^0$ after taking conjugate).
+
+So for QED, there would be extra interaction terms in the Lagrangian
+
+\[ \lag = \bar{\psi} i \gamma^\mu (\partial_\mu - ieA_\mu)\psi - m\bar{\psi}\psi - \frac{1}{4}F_{\mu\nu}F^{\mu\nu}\]
+
+Relevance of $\kappa$ in the Dirac equation
+
+\[ (i \gamma^\mu \partial_\mu - \kappa)\psi(x) = 0 \quad \quad \times \left(i\gamma^\mu\partial_\mu + \kappa \right)\ \text{on the left}\]
+
+\[ (i\gamma^\mu \partial_\mu + \kappa)(i\gamma^\mu \partial_\mu - \kappa) \psi(x) = 0\]
+\[ (-\underbrace{\gamma^\nu\gamma^\mu}_{\text{becomes}}\partial_\nu \partial_\mu - \kappa^2)\psi(x) = 0 \]
+\[ \hookrightarrow \frac{1}{2}(\gamma^\nu \gamma^\mu + \gamma^\mu\gamma^\nu) = \frac{1}{2} \{\gamma^\nu, \gamma^\mu\} = g^{\mu\nu}\mathbb{1}\]
+
+\begin{align*}
+	\Rightarrow (-g^{\mu\nu} \partial_\nu \partial_\mu - \kappa^2) \psi(x) &= 0\\
+	(\partial^\mu\partial_\mu - \kappa^2)\psi(x) &= 0\\
+	\hookrightarrow \text{ Klein-Gordon equation}
+\end{align*}  
+
+Therefore, the Dirac equation implies the Klein-Gordon equation.
+
+
+\end{document}
+

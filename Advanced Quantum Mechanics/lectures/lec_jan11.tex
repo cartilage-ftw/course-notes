@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{physics}
+%\usepackage{mathtools}
+%\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\geometry{margin=2.5cm, top=2.8cm, bottom=2.5cm}
+
+\setlength{\droptitle}{-10em}
+%\addtolength{\droptitle}{4pt}
+
+\author{Aayush Arya}
+\title{}
+\date{January 11, 2023}
+
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+
+%\usepackage{lipsum}
+
+\begin{document}
+	
+	\pagestyle{fancy}
+	\fancyhead[RO]{\small{Canonical quantization of a scalar field theory}}
+	
+	\maketitle \vspace{-6pt}
+	\hrule
+	\begin{center}
+		Lecture Notes \\
+		Advanced Quantum Mechanics
+	\end{center}
+	\hrule
+	
+	\subsection*{A word on the zero-point energy}
+	
+	In the Hamiltonian \[ H = \sum_{\vec{k}} \hbar \omega_k \left(a^\dagger_ka _k + \frac{1}{2} \right)\]
+	
+	The constant $\hbar\omega_k\frac{1}{2}$ term is the zero point energy for each mode $\vec{k}$. There are an infinite number of modes $\vec{k}$, and the value of $|k|$ is apparently not bounded from above (leading to arbitrarily large values of $\hbar \omega_k$) and there are infinite such terms. This causes $H$ to diverge. \\
+	
+	Mathematically this can be dodged by inserting a constant `vacuum' energy density term $\Omega_0$ that exactly cancels the zero-point energy. One place where using an arbitrary energy density $\Omega_0$ is not allowed is {\it gravity}. In general relativity, this constant term has real physical implications. There are dark energy models that attribute the expansion of the universe to a negative energy density.\\
+	
+	Another way to eliminate such an infinity is to take the sum $\sum_k^\lambda$, where $\lambda$ dictates the \textbf{ultraviolet cutoff}.
+	
+	\subsection*{Infinite volume limit ($\L \rightarrow \infty$)}
+	
+	\[ \phi(\vec{x}) = \sqrt{\frac{hc^2}{L^3}} \sum_{\vec{k}} \frac{1}{\sqrt{2\omega_k}} \left(a_k e^{i\vec{k}\cdot \vec{x}} + a_k^\dagger e^{-i\vec{k}\cdot \vec{x}}\right) \]
+	
+	The way to take the continuum limit is \[ \frac{1}{L^3} \sum_k f(\vec{k}) \rightarrow \int \frac{d^3 \vec{k}}{(2\pi)^3} f(\vec{k})\]
+	
+	We shall rescale the creation and annihilation operators that have the appropriate normalization.
+	
+	\[ a(\vec{k}) := L^{3/2} a_{\vec{k}}\] which leads to a commutation relation \[ [a(\vec{k}), a(\vec{k}')^\dagger] = L^3 \delta_{k k'} \rightarrow (2\pi)^3 \delta^3(\vec{k}- \vec{k}')\]
+	
+	when we go from discrete to continous variables, the Kronecker delta becomes a Dirac delta. Now, making this substitution
+	
+	\[ \phi(\vec{x}) = \sqrt{\hbar c^2} \int \frac{d^3 \vec{k}}{(2\pi)^3 \sqrt{2 \omega_k}} \left(a(\vec{k}) e^{i\vec{k}\cdot \vec{x}} + a(\vec{k})^\dagger e^{-i\vec{k}\cdot \vec{x}}\right)\]
+	
+	and so $L\rightarrow\infty$ we arrive at a nice form of the Hamiltonian
+	
+	\[ H_0 = \frac{1}{L^3} \sum_{\vec{k}} \hbar \omega_k \left( a(\vec{k})^\dagger a(\vec{k}) + \frac{1}{2}\right) \rightarrow \int\frac{d^3\vec{k}}{(2\pi)^3} \hbar \omega_k (a_{\vec{k}}^\dagger a_{\vec{k}} + \frac{1}{2}) \]
+	
+	with $H_0$ we mean that this is the non-interacting part. The total Hamiltonian \[ H= H_0 + \Delta H, \quad \Delta H = \int d^3 \vec{x}\ V(\phi) \]
+	
+	
+	\subsection*{Momentum operator}
+	
+	\[ \vec{P} = -\frac{1}{c^2} \int d^3 \vec{x} \dot{\phi} \vec{\nabla} \phi\]
+
+It's also convenient to replace $\dot{\phi}$ with $\pi(\vec{x})$
+
+	\[ \vec{P} = -\int d^3 x \pi(\vec{x}) \vec{\nabla}\phi(\vec{x}) = \sum_{\vec{k}} \hbar k a_k^\dagger a_k  = \frac{1}{L^3} \sum_{\vec{k}} a(\vec{k})^\dagger a(\vec{k}) \rightarrow \int \frac{d^3 k}{(2\pi)^3} \hbar k a_k^\dagger a_k \]
+	
+		
+	\section*{Extension to a complex scalar field $\phi(x) \in \mathbb{C}$}
+	Remember that the Lagrangian density has to be real ($\lag \in \mathbb{R}$).
+	
+	\[ \lag = \partial_\mu \phi \partial^\mu \phi^\dagger - \kappa^2 \phi^\dagger\phi + \Omega_0 + ( V(\phi^\dagger \phi))\]
+	
+	The mode expansion for such a complex field\footnote{The reason for the choice of the expansion in terms of $a_k$ and $b_k^\dagger$ and not just one of them is that otherwise the time-dependence would be more sophisticated, not first-order in the derivative.}
+	
+	\[ \phi (\vec{x}) = \sqrt{\hbar c^3} \int \frac{d^3 k }{(2\pi)^3 \sqrt{2\omega_k}} \left( a(\vec{k}) e^{i\vec{k}\cdot \vec{x}} + b(\vec{k}) ^\dagger e^{-i\vec{k}\cdot \vec{x}} \right)\]
+	
+	and the conjugate momentum would be defined normally as 
+	\[ \pi(\vec{x}) = \frac{\partial \lag}{\partial \dot{\phi}} = \frac{1}{c} \partial^0 \phi^\dagger = \frac{1}{c^2} \dot{\phi}^\dagger \]
+	
+	So this theory describes to particle species.\\ $a(\vec{k})^\dagger \ket{0}$ is a one-particle state for particles of type `a'. and $b(\vec{k})^\dagger \ket{0}$ for those of type `b'.
+	
+	Here, due to the form of the $\kappa^2$ term in $\lag$, the mass of both the particles is $m = \hbar \kappa/c$
+	
+	\section*{Additional conserved quantity}
+	
+	Because of the U(1) symmetry\footnote{$\phi(x) \rightarrow e^{i\alpha} \phi$ in turn implies $\phi^\dagger \rightarrow e^{-i\alpha} \phi^\dagger$ which for a constant $\alpha$ leaves the $\lag$ unchanged.}, there exists a conserved current $J^\mu$ such that $\partial_\mu J^\mu = 0$. The time-like component of this current corresponds to a charge.
+	
+	
+	\[ Q = \frac{i}{\hbar} \int d^3 \vec{x} \left( \phi^\dagger \pi^\dagger - \pi \phi \right) = \int \frac{d^3 k}{(2\pi)^3} \left( a(\vec{k})^\dagger a(\vec{k}) - b(\vec{k})^\dagger b(\vec{k}) \right)\]
+	
+	Type `a' and type `b' particles have equal and opposite charge.
+	
+	If we wanted to interpret this conserved charge as the electromagnetic charge, we would add a coupling term to the $\lag_{em}$ equal to $-eA_\mu j^\mu$.\\
+	
+	Note that we need to impose extra conditions and another term to introduce a full {\it gauge invariance} in the theory\footnote{In the Hamiltonian for the em field that we had before, the $\frac{1}{2m} \left( \vec{p} - \frac{e}{c}\vec{A}\right)^2$ part has a term quadratic in $\vec{A}$ which is needed for $H$ to be gauge invariant}.\\
+	
+	
+	We do not yet have a theory that can describe the electron\footnote{The spin-statistics theorem says that in a relativistic theory one cannot have bosons with spin-$\frac{1}{2}$ and fermions with integer-spin.} because it has a spin-1/2. 
+	
+	\section*{A relativistic quantum field theory of the electron}
+	So far we've had \begin{itemize}
+		\item scalar field $\phi'(x') = \phi(x)$, where \[ x'^{\mu} = A^\mu_\nu x^\nu + b^\mu\]
+		
+		\item a vector field \[ A^\mu: A'^\mu (x') = \Lambda^\mu_\nu A^\nu (x)\]
+		
+		which led to the photon with polarization states $\lambda = \pm $
+		
+		the angular momentum operator $J_3$ still had eigenvalues $\pm \hbar$ ($J_3\ a_k^\dagger\ket{0} = \pm \hbar a_k^\dagger\ket{0}$), but an e$^-$ shall have only half-spin.
+	\end{itemize} 
+
+	While trying to resolve this, we shall come to the Dirac theory.
+	
+\end{document}
