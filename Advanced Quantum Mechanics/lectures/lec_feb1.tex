@@ -1,0 +1,152 @@
+% compile with XeTeX
+\documentclass[11pt]{article}
+
+\usepackage{physics} 
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage[regular]{newcomputermodern}
+\usepackage{unicode-math}
+%\setmathfont[range=\mathbb]{TeX Gyre Termes Math}
+%\usepackage{mathtools}
+%\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\usepackage{fancyhdr}
+
+\usepackage{slashed} % for Dirac operators
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\geometry{margin=2.5cm, top=2.5cm}
+\author{}
+\title{}
+\date{}
+
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+
+\begin{document}
+	
+	\pagestyle{fancy}
+	\maketitle
+	
+	\vspace{-8em}
+	
+	
+	%\hrule
+	\noindent
+	%\hspace{-1.2em}
+	\fbox{
+		\parbox{\textwidth}{
+			\begin{center}
+				\vspace{-8pt}
+				\footnotesize{Advanced Quantum Mechanics}\hfill \footnotesize{WiSe 2022/23}\\
+				%\vspace{4pt}
+				\centering \normalsize Aayush Arya \\
+				\centering \small Feburary 1, 2023\\
+				\footnotesize{Theoretical Physics 5} \hfill \footnotesize{Instructor: Harvey Meyer}
+			\end{center}
+			\vspace{-8pt}
+		}
+	}
+	%\hrule 
+	
+	\vspace{11pt}
+
+	Recall that \[ \phi(t, \vec{x}) = \sqrt{h}c \int \frac{d^3 k}{(2\pi)^3\sqrt{2\omega_k}} (a(\vec{k}) e^{i(\vec{k}\cdot \vec{x}) - \omega_k t}  + b(\vec{k})^\dagger e^{-i(\vec{k}\cdot \vec{x} - \omega_k t)} )  \]
+	
+	
+	where $\phi$ is our complex scalar field\\
+	
+	\textit{Dirac field}: \[ \psi(t, \vec{x}) = \sqrt{h}c \int \frac{d^3 k}{\sqrt{2\omega_k}} ( a^s(\vec{k}) u^s(k) e^{i(\vec{k}\cdot\vec{x}-\omega_k t)} +b^s(\vec{k})^\dagger v^s(k)e^{-i(\vec{k}\cdot\vec{x} - \omega_kt)} )  \] satisfies \[(i\gamma^\mu \partial_\mu - \kappa)\psi = 0\]
+	for a Lagrangian density \[\lag = \bar{\psi}i\gamma^\mu\partial_\mu\psi - \kappa\bar{\psi}\psi\]
+	
+	Also recall that, for our complex scalar field, the following commutation relations hold
+	
+	\[ [\phi(0, \vec{x}), \pi(0, \vec{y})] = i\hbar \delta^3(\vec{x}-\vec{y});\quad \text{analogous to}\ [q_j, p_l] = i\hbar \delta_{jl}\]
+	
+	and that \[ [\phi(0, \vec{x}) , \phi(0, \vec{y})] = [\pi(0, \vec{x}), \pi(0, \vec{y})] = 0 \]
+	\[ a(\vec{k}), a(\vec{k'})^\dagger = (2\pi)^3 \delta(\vec{k} - \vec{k'})\]
+
+
+	What's the importance of having particles and antiparticles?\\
+	
+ The commutator of two Hermitian operators being zero in the linear algebra sense is that you can find a common eigenbasis that diagonalizes both of them. From a physical point of view, we can do observations of $A$ and $B$ simultaneously then the measurement of $A$ does not influence the measurement of $B$.\\
+	
+	Now then comes special relativity and says, ``Wait a minute",\\
+	Everything that happens outside the causality (any point that is separated by a space-like separation) cannot be causally connected. A point that's below the $x=ct$ line cannot be influenced by say, a point that is at the origin of the worldline.\\
+	
+	Otherwise, $\exists$ a frame where the cause happens outside the effect. 
+	
+	Which is why, if you look at $[\phi(t,\vec{x}), \phi(t', \vec{y})] = 0$, it's zero in the region $(\vec{x}-\vec{y})^2 > (t-t')^2$.\\
+	
+	\noindent \fbox{\parbox{\textwidth}{It's only zero because there's a cancellation in the commutator of the contribution from the particles and the antiparticles}}\\
+	
+	The relativistic field theory is thus a construction which automatically satisfies the ``marriage" of quantum mechanics and relativity. Constructing a $\lag$ that helps satisfy these conditions is otherwise a very difficult task.\\
+	
+	
+	Now, while constructing a field theory for the electron, we couldn't impose the commutator relation because for describing fermions, what we \textit{do} need to impose is an \textit{anti-commutation} relation.\\
+	
+	What happens if you impose a commutator? e.g. the Hamiltonian is no longer bounded from below. The lowest eigenvalue is not finite but is rather $-\infty$. That expresses the fact that you can't have a theory such as Dirac's theory which describes bosons. This is an illustration of the \textit{spin-statistics theorem}%\footnote{Half-integer spin particles have to be fermions in a relativistic field theory, and integer spin particles have to be bosons.}
+	
+	
+	We want to describe the electron (spin-1/2 fermion) $\rightarrow$ impose ``equal-time" anticommutator relations:
+	
+	\[ \{ \psi_a(0, \vec{x}), \underbrace{\pi_b}_{\frac{i}{c}\psi^\dagger_b}(0, \vec{y}) \} = i\hbar \delta^3(\vec{x} - \vec{y})\]
+	
+	which immediately implies that
+	\[ \{ \psi_a(0, \vec{x}), \psi_b^\dagger(0, \vec{y})\} = \hbar c\ \delta^3 (\vec{x}-\vec{y})\]
+	along with\[\{\psi_a(0, \vec{x}), \psi_b(0, \vec{y})\} = 0\]
+	(and same for the complex conjugates).
+	
+	What do these antucommutation relations imply for the $a^s(\vec{k}),\ b^s(\vec{k})$? 
+	
+	The outcome is
+	\[  \{a^s (\vec{k}), a^{s'}(\vec{k'}) \} = (2\pi)^3\delta_{ss'}\delta^{(3)}\delta(\vec{k}-\vec{k'})\]
+	
+	The $a$'s and the $b$'s have 0 anticommutators
+	
+	\[ \{a^s(\vec{k}), b^{s'}(\vec{k'})\} = 0\]
+	regardless of whether either of these have a $\dagger$ or not.
+	
+	\[ a^s(\vec{k})^\dagger b^s(\vec{k'})^\dagger \ket{0} = -b^{s'} (\vec{k'})^\dagger a^s(\vec{k})^\dagger\ket{0}\]
+	
+	The Hilbert space in which these states live: \[\mathcal{F}_-(\mathcal{H_a}) \otimes \mathcal{F}_-(\mathcal{H_b}) \]
+	with $\mathcal{H_a}, \mathcal{H_b}$ \text{being one particle Hilbert spaces} e.g. $L^2(\mathbb{R}^3) \otimes \mathbb{C}^2$
+	
+	\[\begin{pmatrix}
+		.\\:\\.
+	\end{pmatrix}\quad \psi(0, \vec{x}) = \sqrt{\hbar}c \int \frac{d^3k}{(2\pi)^3 \sqrt{2\omega_k}} \sum_{s=1,2} (a^s(\vec{k})u^s_e(\vec{k}) + b^s(-\vec{k})^\dagger v^s_e(-\vec{k}))e^{i\vec{k}\cdot\vec{x}}\]
+	
+	(we're doing it for each component $e$ of the spinors $u$ and $v$)
+	
+	similar for $\psi^\dagger(0, \vec{y})$ 
+	% Fuck, I hope I don't have to look at the following block again. I had an extra "^" before a "_" and that was causing an error that I couldn't figure out for very long.
+	\begin{align*}
+		\{\psi_e(0, \vec{x}), \psi_f(0, \vec{y})\} =\ & \hbar c^2 \int \frac{d^3k}{(2\pi)^3\sqrt{2\omega_k}} \int \frac{d^3q}{(2\pi)^3 \sqrt{2\omega_q}} \sum_{r=1,2}\sum_{s=1,2} \left( (2\pi)^3 \delta(\vec{k}-\vec{q}) \delta^{rs}u_e^s(\vec{k}) u_f^r\dagger(\vec{q}) \right)\\
+		=&\ \hbar c^2 \int \frac{d^3k}{(2\pi)^3\sqrt{2\omega_k}} e^{i\vec{k}\cdot(\vec{x}-\vec{y})}\sum_{s=1,2}\left( u^s(\vec{k}) u^s(\vec{k})^\dagger + v^s(-\vec{k})v^s(\vec{-k})^\dagger \right)\\
+		=&\ \hbar c^2 \int \frac{d^3 k}{(2\pi)^3 2\omega_k} e^{i\vec{k}\cdot(\vec{x}-\vec{y})} \underbrace{ \sum_{s=1,2} ( \underbrace{u^s(\vec{k}) \bar{u^s}(\vec{k}) }_{\cancel{ k^0\gamma^0 - \vec{k}\cdot \vec{\gamma} } + \kappa} + \underbrace{v^s(-\vec{k}) \bar{v^s}(-\vec{k})}_{\cancel{k^0\gamma^0 - \vec{k}\cdot \vec{\gamma} }- \kappa} ) }_{2k^0 \delta^{ef} = 2\frac{\omega_k}{c}\delta^{ef}}\\
+		=&\ \hbar c^2\ \delta_{ef} \underbrace{\int \frac{d^3\vec{k}}{(2\pi)^3}\  e^{i\vec{k}\cdot(\vec{x}-\vec{y})}}_{\delta^3(\vec{x}-\vec{y})}
+	 \end{align*}
+
+
+	The Hamiltonian
+	
+	\begin{align*}
+		H &= \int d^3\vec{x}\ \bar{\psi}(\vec{x}) (-i\vec{\nabla_x} \cdot \vec{\gamma} + \kappa)\psi(\vec{x})\\
+		&=\ \int d^3\vec{x} \hbar c^2  \int \frac{d^3q}{(2\pi)^3 \sqrt{2\omega_q}} e^{-i\vec{q}\cdot\vec{x}} \sum_{r=1,2} (a^r(\vec{q})^\dagger \bar{u}^r(\vec{q}) + b^r(-\vec{q}\bar{v^r})(-\vec{q})\\
+		&  \quad \quad \int \frac{d^3 k}{(2\pi)^3 \sqrt(2\omega_k)} e^{i\vec{k}\cdot \vec{x}} (\vec{k}\cdot \vec{\gamma} +\kappa) \sum_{s=1,2}(a^s(\vec{k}) +u^s(\vec{k}) + b^s(-k\vec{k}) v^s(\vec{-k}))\\ 
+		& =\hbar c^2 \int \frac{d^3k}{(2\pi)^3 2\omega_k} \sum_{r,s}(a^r(\vec{k})^\dagger \bar{u}^r(\vec{k}) + b^r(-\vec{k})\bar{v^r}(-\vec{k})) \underline{(\vec{k} \cdot \vec{\gamma} + \kappa)} (a^s(\vec{k}) u^s(\vec{k}) + b^s(-\vec{k})^\dagger v^s(-\vec{k}))\\
+	\end{align*}
+	
+	for the underlined part, recall that \[ (\vec{k}\cdot \vec{\gamma} + \kappa)\ u(k) = k^0\gamma^0 u(\vec{k}) \quad \quad \implies (\slashed{k} - \kappa)u(\vec{k}) = 0\]
+	for particles; while for antiparticles
+	\[ (\vec{k}\cdot\vec{\gamma} - \kappa)\ v(-\vec{k}) = -k^0\gamma^0 v(\vec{k})  \quad \quad \implies (\slashed{k} + \kappa)v(\vec{k})=0\]
+
+ 
+\end{document}
