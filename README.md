@@ -18,3 +18,5 @@ Notes that I took for my lectures as a student
 [Jan 30, 2023: Behavior of the solutions](Advanced%20Quantum%20Mechanics/lectures/lec_jan30.pdf)
 
 [Feb 1, 2023: Anti-commutators of the Dirac field components](Advanced%20Quantum%20Mechanics/lectures/lec_feb1.pdf)
+
+[Feb 6, 2023: Symmetries of the Dirac equation](Advanced%20Quantum%20Mechanics/lectures/lec_feb6.pdf)

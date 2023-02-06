@@ -1,0 +1,199 @@
+% compile with XeTeX
+\documentclass[11pt]{article}
+
+\usepackage{physics} 
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage[regular]{newcomputermodern}
+\usepackage{unicode-math}
+%\setmathfont[range=\mathbb]{TeX Gyre Termes Math}
+%\usepackage{mathtools}
+%\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\usepackage{fancyhdr}
+
+\usepackage{slashed} % for Dirac operators
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\geometry{margin=2.5cm, top=2.5cm}
+\author{}
+\title{}
+\date{}
+
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+
+\begin{document}
+	
+	\pagestyle{fancy}
+	\maketitle
+	
+	\vspace{-8em}
+	
+	
+	%\hrule
+	\noindent
+	%\hspace{-1.2em}
+	\fbox{
+		\parbox{\textwidth}{
+			\begin{center}
+				\vspace{-8pt}
+				\footnotesize{Advanced Quantum Mechanics}\hfill \footnotesize{WiSe 2022/23}\\
+				%\vspace{4pt}
+				\centering \normalsize Aayush Arya \\
+				\centering \small Feburary 6, 2023\\
+				\footnotesize{Theoretical Physics 5} \hfill \footnotesize{Instructor: Harvey Meyer}
+			\end{center}
+			\vspace{-8pt}
+		}
+	}
+	%\hrule 
+	
+	\vspace{11pt}
+	
+	
+	Continuing the math from last lecture
+	
+	\[ H = \hbar c^2 \int \frac{d^3 k}{(2\pi)^3} \frac{k^0}{2\omega_k} \sum_{r_s} (a^r(\vec{k})^\dagger u^r(\vec{k})^\dagger + b^r(-\vec{k})v^r(-\vec{k})^\dagger )(a^s(\vec{k})u^s(\vec{k}) - b^s(-\vec{k})^\dagger v^s(-\vec{k}))  \]
+	
+	
+	\[ \text{and, since}\ \quad \begin{cases}
+		u^s(\vec{k})^\dagger u^s (\vec{k}) \\
+		v^r(\vec{k}) v^s(\vec{k}) 
+	\end{cases} =\ 2k^0 \delta^{rs}
+	\]
+		\[u^r(\vec{k})^\dagger v^s(-\vec{k}) = 0\]
+	
+	the double sum collapses
+	
+	\[ = \hbar c^2 \int \frac{d^3k}{(2\pi)^3\ \cancel{2k^0}}\frac{k^0 \cancel{(2k^0)}}{c}
+.		\sum_{s=1,2} (a^{s\dagger}_k)a^s_k - \underline{b^s_{-k} b_{-k}^{s\dagger}} \]
+	
+	we rewrite the underlined part as $-b^r(-\vec{k})^\dagger b^s(-\vec{k}) + (2\pi)^3\delta^{}$.\\
+	
+	It's immediately worth remembering what the constant term in that does \textemdash it adds a zero-point vacuum energy, which makes the Hamiltonian diverge. If we are only interested in ``differences" in energy (which are what we can observe) then such a pathology can be removed by using a constant energy density term that exactly cancels this. In essence,
+	
+	\begin{center}
+		\boxed{
+		H = \int \frac{d^3k}{(2\pi)^3} \hbar \omega_k \sum_{s=1,2}(a_k^{s\dagger}a^s_k + b_k^{s\dagger} b^s_k)	+ \text{(constant)}
+	}
+	\end{center}
+	
+	The spatial momentum operator \[ \vec{P} = \frac{1}{\hbar c}\int d^3\vec{x} \psi^\dagger(x) (-i\hbar -\vec{\nabla}) \psi(x)\]
+	
+	Notice the similarities (and differences) of this with the Hamiltonian.
+	We can pull out an $\hbar$, multiply with $\gamma^0$ (to turn $\psi^\dagger \to \bar{\psi})$
+	
+	\[ \vec{P} = \frac{1}{c}\int d^3\vec{x} \bar{\psi}(x)(-i\gamma^0 \vec{\nabla}) \psi(x) \]
+	
+	We can then insert the expansion for $\bar{\psi}$ and $\psi$
+	
+	\[ = \hbar c^2 \frac{d^3k}{(2\pi)^3} \frac{\vec{k}}{2\omega_k} \sum_{r,s} (a^r(\vec{k})^\dagger u^r(\vec{k})^\dagger + b^r(-\vec{k}) v^r(-\vec{k})^\dagger)(a^s(\vec{k}u^s(\vec{k}) + b^s(-\vec{k})^\dagger v^s(-\vec{k})))\]
+	
+	$$:$$\\
+	
+	and an analogous treatment to get
+	
+	\begin{center}
+		\boxed{\vec{P} = \int \frac{d^3 \vec{k}}{(2\pi)^3}\hbar \vec{k} \sum_{s=1,2} (a^s(\vec{k})^\dagger a^s(\vec{k}) + b^s(\vec{k})^\dagger b^s(\vec{k}))
+		}
+	\end{center}
+which is the total momentum carried by electrons and positrons.
+	
+	We also have a third conserved quantity in the Dirac theory (a current), just like in the complex scalar field theory
+	
+	\[ j_\mu = \frac{1}{i} (\phi \partial_\mu \phi^* - \phi^* \partial_\mu \phi)\]
+	obeys $\partial_\mu j^\mu = 0$
+	
+	\[ \Rightarrow\ Q = \int d^3\vec{x} j^0\]
+	which is a time-independent (conserved) quantity.\\
+	
+	
+	In scalar field theory, when we had a Lagrangian
+	
+	\[ \lag = \partial_\mu \phi \partial^\mu \phi^* - \kappa^2 \phi^* \phi\]
+	which was invariant under a phase shift by $e^{i\alpha}$
+	
+	\begin{align*}
+		\phi(x) &\to e^{i\alpha} \phi(x)\\
+		\phi^*(x) &\to \phi^*(x) e^{-i\alpha}
+	\end{align*}
+
+	
+	similarly, here our $\lag = \bar{\psi}(i\gamma^\mu \partial_\mu - \kappa)\psi$ is also under the same type of rotation, i.e. it preserves a $U(1)$ symmetry \footnote{This is not a conformal symmetry, by the way. A conformal transformation also involves $x$ (the argument of the field)}
+	
+	The associated conserved current satisfying $\partial_\mu = 0$ is $\bar{\psi}\gamma^\mu \psi$
+	
+	and it's trivial to see that  \begin{align*}
+		\partial_\mu (\bar{\psi}\gamma^\mu \psi) & = \bar{\psi}\gamma^\mu \partial_\mu + \bar{\psi}\gamma^\mu\partial_\mu \psi\\
+		& =\bar{\psi}(-\kappa)\psi + \bar{\psi}\kappa \psi\\
+		& =0
+	\end{align*}
+
+	and the conserved charge then
+	
+	\[ Q = \int d^3 \vec{x} \bar{\psi}\gamma^0\psi\]
+	
+			\[ = \hbar c^2 \int \frac{d^3 K}{(2\pi)^3}\frac{2k^0}{2k^0 c} \sum_{s=1,2}( ... )\]
+	
+	
+	and we apparently end up getting
+	
+	\[ Q = \hbar c \int \frac{d^3 k}{(2\pi)^3} \sum_{s=1,2}(a^{s\dagger}_k a^s_k - b^{s\dagger}_k b^s_k)\]
+	
+	Note interestingly how we have terms of opposite signs here.\\
+	
+	This is saying that the electric charge of the electrons and positrons act oppositely to each other.\\
+	
+	The number of electrons $a^{s}(\vec{k})^\dagger a^s(\vec{k})$ alone is not conserved (one can have pair creation and annihilation processes, it's the total charge that would still be conserved).\\
+	
+	Electric charge operator: $Q_{\rm{elec}} = eQ$\\
+	
+	Interestingly, there's another transformation of the Dirac field
+	
+	\[ \gamma_5 = i\gamma^0 \gamma^1 \gamma^2\gamma^3 = \begin{pmatrix}
+		-\mathbb{1} & 0 \\ 0 & \mathbb{1}
+	\end{pmatrix}\]
+	
+	\[ \psi_L = \frac{1-\gamma_5}{2}\psi, \quad \psi_R = \frac{1+\gamma_5}{2}\psi \]
+	  
+	  \[ \psi^* \gamma^0 \psi = \psi_l^* \psi_R + \psi^*_R\psi_L\]
+	  
+	  
+	  An important property of the $\gamma_5$ matrix is that it anti-commutes with every other one of the $\gamma^\mu$ matrices, i.e. 
+	  
+	  \[ \{\gamma_5, \gamma^\mu\} = 0\]
+	  
+	  Let's try another transformation of the field and see if that leads to a symmetry
+	  
+	  \begin{align*}
+	  	\psi \to & e^{i\alpha \gamma_5} \psi\\
+	  	\bar{\psi} \to & \bar{\psi} e^{i\alpha\gamma_5}
+	  \end{align*}
+  
+  		In $\bar{\psi} \gamma^\mu \psi \to \bar{\psi} e^{i\alpha\gamma_5}\gamma^\mu e^{i\alpha\gamma_5} \psi = \bar{\psi} \gamma^\mu\psi $
+  		
+  		The odd terms in the expansion of $e^{i\alpha \gamma_5}$ pick up a minus sign. So, $e^{i\alpha \gamma_5}\gamma^\mu = \gamma^\mu e^{-i\alpha\gamma_5}$.
+	  
+	  Although the mass term $\bar{\psi}\psi \to \bar{\psi} e^{2i\alpha \gamma_5} \psi$ is not invariant.
+	  The kinetic term $\bar{\psi}\gamma^\mu \partial_\mu\psi \to \bar{\psi} \gamma^\mu \partial_\mu \psi$ is invariant.
+	  
+	  This is still a symmetry for massless particles though.\\
+	  
+	  
+	  Consider the current $\bar{\psi}\gamma_5 \gamma^\mu \psi$
+	  
+	  \[ \partial_\mu (\bar{\psi} \partial_\mu \gamma_5 \gamma^\mu \psi + \bar{\psi} \gamma_5 \gamma^\mu\partial_\mu \psi)  = \underbrace{ - \bar{\psi}(\partial_\mu \gamma^\mu) \gamma_5 \psi}_{-\kappa\bar{\psi \gamma_5 \psi}}\ +\ \bar{\psi}\gamma_5 \kappa \psi \]
+			
+			\[ = 2 \kappa\bar{\psi}\gamma_5\psi\]
+
+	which vanishes only for $\kappa=0$ (massless particles).
+
+\end{document}
