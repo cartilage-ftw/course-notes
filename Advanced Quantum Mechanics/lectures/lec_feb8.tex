@@ -1,0 +1,161 @@
+% compile with XeTeX
+\documentclass[11pt]{article}
+
+\usepackage{physics} 
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage[regular]{newcomputermodern}
+\usepackage{unicode-math}
+%\setmathfont[range=\mathbb]{TeX Gyre Termes Math}
+%\usepackage{mathtools}
+%\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\usepackage{fancyhdr}
+
+\usepackage{slashed} % for Dirac operators
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\geometry{margin=2.5cm, top=2.5cm}
+\author{}
+\title{}
+\date{}
+
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+
+\begin{document}
+	
+	\pagestyle{fancy}
+	\maketitle
+	
+	\vspace{-8em}
+	
+	
+	%\hrule
+	\noindent
+	%\hspace{-1.2em}
+	\fbox{
+		\parbox{\textwidth}{
+			\begin{center}
+				\vspace{-8pt}
+				\footnotesize{Advanced Quantum Mechanics}\hfill \footnotesize{WiSe 2022/23}\\
+				%\vspace{4pt}
+				\centering \normalsize Aayush Arya \\
+				\centering \small Feburary 8, 2023\\
+				\footnotesize{Theoretical Physics 5} \hfill \footnotesize{Instructor: Harvey Meyer}
+			\end{center}
+			\vspace{-8pt}
+		}
+	}
+	%\hrule 
+	
+	\vspace{11pt}
+	
+	\section*{Interaction of a scalar field with a Dirac field}
+	
+	
+	\[ \lag_{int} = -g\phi\bar{\psi}\psi\]
+	
+	\[ \lag = \frac{1}{2}\partial_\mu\phi\partial^\mu \phi - \frac{1}{2}\tilde{\kappa}^2\phi^2 + \bar{\psi}(i\gamma^\mu\partial_\mu - \kappa) \psi - g\phi\bar{\psi}\phi \]
+	
+	\[ \phi(\vec{x}) = \sqrt{\hbar} c \int \frac{d^3 k}{(2\pi)^3 \sqrt{2\Omega_{\vec{k}}}} (a(\vec{k})e^{i\vec{k}\cdot \vec{x}}  + a(\vec{k})^\dagger e^{-i\vec{k}\cdot\vec{x}} ) \]
+	
+	and
+	
+		\[ \psi(\vec{x}) = \sqrt{\hbar}c \int \frac{d^3\vec{q}}{(2\pi)^3 \sqrt{2\omega_{\vec{q}}}} \sum_{s=1,2} (a^s(\vec{q}) u^s(q)e^{i\vec{q}\cdot\vec{x}} + b^s(\vec{q})^\dagger v^s(q) e^{-i\vec{q}\cdot \vec{x}} )\]
+		
+		Note that the creation and annihilation operators in $\phi$ and $\psi$ should not be confused. Those for $\phi$ hold the bosonic commutation relations Dirac ones hold fermionic anti-commutation relations.\\
+		
+		
+		The Higgs decays into a fermion anti-fermion pair ($f\bar{f}$). Probability per unit time (i.e. rate) of the transition $h \to \bar{f} f$:\\
+		\textit{Fermi's Golden Rule}:
+		
+				\[ \Gamma = \frac{2\pi]}{\hbar} |\bra{\bar{f}f}H_{int}\ket{k}|^2 \delta(E_k - E_f - E_{\bar{f}})\]
+				
+				\[ H = \int d^3\vec{x}  \left(  \frac{1}{2}\pi(x)^2 + \frac{1}{2}(\vec{\nabla}\phi)^2 + \frac{1}{2}\tilde{\kappa}^2\phi^2 + \bar{\psi}(-i\vec{\gamma}\cdot \vec{\nabla} + \kappa)\psi + g\phi\bar{\psi}\psi \right) \]
+	
+	
+				\[ H_{\int} = g\int d^3\vec{x} \phi\bar{\psi}\psi \]
+				
+				\[ H = \sum(p\cdot \dot{q}) - \lag \]
+				
+		\section*{Standard Model}
+		
+		\[ \sqrt{\hbar c} g = \frac{m_f}{V} \simeq \frac{5}{250} = 0.02\]
+		
+		$V$ = Higgs vaccuum expectation value $=246$ GeV. The mass $m_h \simeq 125$ GeV. The Higgs decays immediately. What are the products usually? The top quark is too heavy.\
+		
+		 the bottom squark is the next lightest one $m_b \simeq 5$ GeV.
+		 
+		 \[ h_{\vec{k}} = c(\vec{k})^\dagger \ket{0} \] (to avoid confusion we have started using a different symbol, $c$ instead of $a$ for the bosonic creation/annihilation operators).
+		 
+		 Normalization: \begin{align*}
+		 	\bra{h_{\vec{k}}'}\ket{h_{\vec{k}}} &= \bra{0} c(\vec{k'})  c(\vec{k})^\dagger \ket{0}\\
+		 	& = (2\pi)^3 \delta^3 (\vec{k} - \vec{k'}) \underbrace{\bra{0}\ket{0}}_{1}\\
+		 	& = L^3\delta_{\vec{k}, \vec{k'}}
+		 \end{align*}
+		 
+		 Since there are two particles 
+		 
+		 \[ \ket{f \bar{f}} = \ket{f,\vec{q},s; \bar{f}, \vec{q}', s'} \]
+		 
+		 		\[ = a^s(\vec{q})^\dagger b^{s'} (\vec{q}')^\dagger \ket{0}\]
+		 		
+		 		of states were unit-normalized ($\bra{h_{k'}} \ket{h_{\vec{k}}} = $$\delta_{\vec{k}, \vec{k'}}$)
+		 		
+		 		\[ \Gamma = \sum_{\vec{q}} +\sum_{\vec{q}'} \sum_{r,s} | \bra{f,\vec{q},s, \bar{f}, \vec{q}, s'}|H_{int} \ket{h_{\vec{k}}} |^2 \]
+		 
+		 Note that we'd prefer these states here to be unit-normalized, but while dealing with the original states $\ket{f \bar{f}}$ for instance, it's convenient to work without normalization
+		 
+		 \[ \xrightarrow{L\to \infty} = (L^3)^2 \int \frac{d^3q}{(2\pi^3) \frac{d^3 q'}{(2\pi)^3} \sum_{r,s}}  (\ ...\ )\]
+		 
+		 \[ = \int \frac{d^3 q}{(2\pi)^3} \int \sum_{r,s} \frac{2\pi}{\hbar} | \bra{f, \bar{f}} H_{int} \ket{h}|^2 \delta(E_{\vec{k}} - E_{\vec{q}} - E_{\vec{q}'}) \]
+		 
+		 In the final state, there's no scalar particle ($\bra{0})$, so we are essentially interested in the matrix element
+		 
+		 \[ \bra{0} | g\int d^3\vec{x} \phi(\bar{\psi}\psi) (c(\vec{k})^\dagger \ket{0})\]
+		 
+		 In $\phi(\vec{x})$ the only term of interest to us here is the one with $c(\vec{k}) e^{i\vec{k}\cdot\vec{x}}$.\\ Let's focus on how $\phi$ acts on $c(\vec{k})^\dagger \ket{0}$\
+		 which is  \[ \bra{0}\phi(\vec{x}) c(\vec{k})^\dagger \ket{0} = \frac{\sqrt{\hbar} c}{\sqrt{2\Omega_k}} e^{i\vec{k}\cdot \vec{x}} \]
+		 
+		 And then \[ \underbrace{\bra{f \bar{f}}_{} \bar{\psi}(\vec{x})} \psi(\vec{x}) \ket{0} \]
+		 
+		 The $\ket{f \bar{f}} = \bra{0}b^{s'}(\vec{q}') a^s(\vec{q})$. In the $\bar{\psi}\psi$,  $\bar{\psi}$ provides an $a^\dagger$ and the $\psi$ will a $b^\dagger$. 
+		 
+		 so we have \[ = \frac{(\sqrt{\hbar}c)^2}{ \sqrt{2\omega_q 2\omega_{q'}} } \bar{u}^s (\vec{q}) e^{-i\vec{q}\cdot \vec{x}} V^{s'} (\vec{q}')\]
+		 
+		 In the end, this matrix element 
+		 \[ \bra{\bar{f}f} H_{int} \ket{h_{\vec{k}}} = g \frac{(\sqrt{\hbar} c)^3}{\sqrt{2\Omega_{\vec{k}} 2\omega_{q'} 2\omega_{q}}} \bar{u}^s(\vec{q}) v^{s'} (\vec{q}') \underbrace{  \int_d^3 x e^{i(\vec{k}-\vec{q} - \vec{q}')\cdot\vec{x}}  }_{(2\pi)^3 \delta^3 (\vec{k} - \vec{q} - \vec{q}') } \]
+		 
+		 Where we see that the last part is inforcing momentum conservation. 
+		 
+		 \[ \bra{\bar{f}f} H_{int} \ket{h_{\vec{k}}} = g^2 (\sqrt{\hbar c})\  | \bar{u}^s(\vec{q}) v^{s'} (\vec{q}') |^2\ \frac{1}{2\Omega_{\vec{k}} 2\omega_{\vec{q}} 2\omega_{\vec{q}'}} (2\pi)^3 \delta^3 (\vec{k}-\vec{q} - \vec{q}')  \underbrace{(2\pi)^3 \delta^3 (\vec{k}-\vec{q} - \vec{q}')}_{L^3 \delta_{\vec{k}, \vec{q}, \vec{q}'}}  \]
+		 
+		 
+		 \[ \Gamma = \int \frac{d^3 q}{(2\pi)^3} \int \frac{d^3 q'}{(2\pi)^3} \sum_{s,s'} \frac{2\pi}{\hbar} \frac{g^2 (\sqrt{\hbar}c)^6}{2\Omega_{\vec{k}}2\omega_{\vec{q}}2\omega_{\vec{q}'}}  \bar{u}^s ...\]
+
+
+One thing we have to do is to select the rest frame of our scalar particle. If we pick the rest frame ($\vec{k} = 0$). That means the $\delta$ function of this energy of the particles is just $mc^2$.\\ That gives $\delta(m_hc^2 - 2E_{q})$, with $E_q = \sqrt{(\hbar q)^2 + m_f^2c^2}$
+
+and therefore, the $\delta$ function takes up a certain value, one that conserves energy
+
+		\[ \delta(mc^2 - 2E_q) = \frac{E_{\vec{q}^*}}{2|\vec{q^*}|^2\hbar^2 c^2} \delta (|\vec{q} - |\vec{q}^*)\] (where $\vec{q}^*$ is the value that conserves energy)
+
+
+so finally \[ \Gamma = \frac{g^2 \hbar c^2}{16\pi \tilde{\kappa}} \frac{2|\vec{q}^*|}{\tilde{\kappa}}  \underbrace{ \sum_{s,s'} | \bar{u}^s (\vec{q}) v^{s'}(\vec{q}) |^2 }_{8\ \vec{q}^{*2}} \]
+
+		
+			\[ \hbar \Gamma = (g^2 \hbar c) \frac{m_h c^2}{8\pi}\]
+		
+		$\hbar \Gamma$ is also apparently the natural width (actually, partial width) of the Lorentzian resonance peak of the particle signature.\\
+		
+		Here, it turns out to be $\hbar \Gamma = 2$ MeV.
+
+\end{document}
