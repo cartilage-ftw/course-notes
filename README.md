@@ -9,9 +9,9 @@ Notes that I took for my lectures as a student
 
 [Jan 16, 2023: Representations of the Lorentz Group](Advanced%20Quantum%20Mechanics/lectures/lecture_jan16.pdf)
 
-[Jan 18, 2023] (need to put them here)
+[Jan 18, 2023: Dirac matrices](Advanced%20Quantum%20Mechanics/lectures/lec_jan18.pdf)
 
-[Jan 23, 2023](Advanced%20Quantum%20Mechanics/lectures/lec_jan23.pdf)
+[Jan 23, 2023: A Lorentz invariant Lagrangian](Advanced%20Quantum%20Mechanics/lectures/lec_jan23.pdf)
 
 [Jan 26, 2023: Solving the Dirac equation in vacuum](Advanced%20Quantum%20Mechanics/lectures/lec_jan26.pdf) (Typo: this as actually on Jan 25)
 

@@ -1,0 +1,183 @@
+% compile with XeTeX
+\documentclass[11pt]{article}
+
+\usepackage{physics} 
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage[regular]{newcomputermodern}
+\usepackage{unicode-math}
+%\setmathfont[range=\mathbb]{TeX Gyre Termes Math}
+%\usepackage{mathtools}
+%\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{fancyhdr}
+
+\usepackage{slashed} % for Dirac operators
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\urlstyle{same}
+
+\geometry{margin=2.5cm, top=2.5cm}
+\author{}
+\title{}
+\date{}
+
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+
+\begin{document}
+	
+	\pagestyle{fancy}
+	\maketitle
+	
+	\vspace{-8em}
+	
+	
+	%\hrule
+	\noindent
+	%\hspace{-1.2em}
+	\fbox{
+		\parbox{\textwidth}{
+			\begin{center}
+				\vspace{-8pt}
+				\footnotesize{Advanced Quantum Mechanics}\hfill \footnotesize{WiSe 2022/23}\\
+				%\vspace{4pt}
+				\centering \normalsize Aayush Arya \\
+				\centering \small January 18, 2023\\
+				\footnotesize{Theoretical Physics 5} \hfill \footnotesize{Instructor: Harvey Meyer}
+			\end{center}
+			\vspace{-8pt}
+		}
+	}
+	%\hrule 
+	
+	\vspace{11pt}
+	
+
+	\subsection*{The Lorentz Group Revisited}
+	
+		A Lorentz transformation is described by \[ \Lambda(\omega) = \mathbb{1} - \frac{i}{2}\omega_{\mu\nu} \mathcal{J}^{\mu\nu}\] for an infinitesimal $\omega \ll 1$.
+		
+		
+		A Lorentz covariant four-vector thus satisfies \[ x'^{\rho} = \Lambda^\rho_\sigma x^\sigma\] 
+		
+		The generators of our infiniteismal Lorentz transformations \[ J^{\mu\nu} = -J^{\mu\nu}\] (principal diagonal elements must be all $0$) satisfy certain commutation relations 
+		$[ J^{\mu\nu} , J^{\rho\sigma} ]$ are equal to some linear combination of $J^{\alpha\beta}$ (i.e. are elements of the same vector space) such that they form an \textit{algebra} \footnote{An {\it algebra} is a vector space equipped with a bilinear product.} of the generators.\\ 
+	
+	
+A spinor field $\psi_\alpha(x):\ \psi'_\alpha(x') = M(\Lambda)_{\alpha\beta}\psi_\beta(x)$.
+
+
+Dirac's proposal for the anticommuting gamma matrices $\gamma^\mu$, that satisfy \[ \{\gamma^\mu, \gamma_\nu\} = 2g^{\mu\nu} \mathbb{1}_{n\times n}\]
+
+		It is then posited that one can find generators that can be constructed from these matrices\[ \S^{\mu\nu} = \frac{i}{4} [\gamma^\mu, \gamma^\nu] = -S^{\nu\mu}\] which also satisfy the commutation relations appropriate for the Lorentz group. That is to say $S^{\mu\nu}$ are a specific example of what $\mathcal{J}^{\mu\nu}$ can be.
+		
+		\subsection*{Specific realization of Dirac's matrices}
+		
+		\[ \gamma^\mu = \begin{pmatrix}
+			0 & \sigma^\mu\\
+			\bar{\sigma^\mu} & 0 
+		\end{pmatrix}\]	
+
+	where $\sigma^\mu = (\mathbb{1}_{2\times 2}, \vec{\sigma})$ and $\{\sigma^i\}$ are the Pauli matrices
+	
+	It is easy to verify that $(\gamma^0)^2 = \mathbb{1}_{4\times 4}$, and that the remaining three gamma matrices
+	
+	\[ \{\gamma^i, \gamma^j\} = -2\delta^{ij} \mathbb{1}_{4\times 4}\] where $i,\ j$ are spatial indices. Furthermore, ${\gamma^0, \gamma^j} = 0$. 
+	
+	The different gamma matrices thus anticommute with each other, and the square of $\gamma^i = -1$.\\
+	
+	\subsection*{How unique are the gamma matrices?}
+	They are unique up to a unitary transformation. 
+	Suppose for a second we find a different $\gamma'^\mu$ that are a unitary transformation of $\gamma^\mu$, i.e.
+	
+	\[ \gamma'^mu = U^\dagger \gamma^\mu U,\quad U^\dagger U = \mathbb{1}\]
+	
+	Then, the $\gamma'^\mu$ must also satisfy the same anticommutation relations. It is easy to explicitly compute $\{\gamma'^\mu, \gamma'^\nu\}$ and obtain, from the properties of $\gamma^\mu$ alone and show that it's equal to $2g^{\mu\nu} \mathbb{1}$.
+	
+	
+	\subsection*{Rotations}
+	are a subgroup of the Lorentz group
+	
+	The generators \[ S^{ij} = \frac{i}{4} [\gamma^i, \gamma^j] = - \frac{i}{4} \begin{pmatrix}
+		[\sigma^i, \sigma^j] & 0 \\
+		0 & \underbrace{[\sigma^i, \sigma^j]}_{=2i\epsilon^{ijk}\sigma^k}
+	\end{pmatrix}\]
+
+		\[ S^{ij} = \frac{1}{2} \epsilon^{ijk} \begin{pmatrix}
+			\sigma^k & 0 \\
+			0 & \sigma^k
+		\end{pmatrix}\]
+	are block diagonal matrices (with the same $\sigma^k$ in the two blocks of the matrix).\\
+	
+	For the moment, let's call the unit rotation matrices \[\begin{pmatrix}
+		\sigma^k & 0 \\ 0 & \sigma^k
+	\end{pmatrix} = \Sigma^k \]
+
+		Now, for an infinitesimal rotation $|\omega| \ll 1$
+		 \[ M(\Lambda(\omega)) = \mathbb{1}_{4 \times 4} - \frac{i}{2}\omega_{ij}S^{ij} \]
+		 
+		 
+		if we are to rotate by an angle $\alpha$ in the xy-plane for example, $\omega_{12} =- \omega{21} = \alpha$, then the $\frac{1}{2} \omega_{ij}\epsilon^{ijk} = \alpha \delta^{kz}$.
+		
+		and the representation \[ M(\Lambda(\omega)) = \mathbb{1}_{4\times 4} - \frac{i}{2} \alpha \Sigma^z\]
+		
+	So, while rotation a $\psi_\alpha(x)$
+	
+	\[ \begin{pmatrix}
+		\psi_1'(x')\\ \psi_2'(x')\\ \psi_3'(x')\\ \psi_4'(x')
+	\end{pmatrix} = \begin{pmatrix}
+						\mathbb{1} - \frac{i\alpha}{2}\sigma^3 & 0 \\
+						0 & 1 - \frac{i\alpha}{2} \sigma^3
+					\end{pmatrix} \begin{pmatrix}
+					\psi_1(x)\\ \psi_2(x)\\ \psi_3(x)\\ \psi_4(x)
+				\end{pmatrix}\]
+		 
+		 The two blocks transform without mixing (the upper two components, don't mix with the lower two).\\
+		 
+		 \subsection*{The spin-1/2 electron}
+		 
+		 As a reminder of the problem, for an electron, the non-relativistic wavefunction \[ \Psi(x) = \begin{pmatrix}
+		 	\Psi_{\uparrow}(x) \\ \Psi_{\downarrow}(x)
+		 \end{pmatrix}\]
+	 
+	 	the probability of measuring either the spin-up or spin-down component in a Stern-Gerlach apparatus should remain invariant under rotation of the coordinates. That is to say $\int d^3x |\Psi_{\uparrow, \downarrow}(x)|^2 $ should remain unaffected\\
+	 	
+	 	If we are to view the same electron in a rotated coordinate system \[ \Psi'(x') = \underbrace{D(R)}_{2\times 2} \Psi(x)\]
+
+		The infinitesimal rotation matrix $$D(R) = -\mathbb{1}_{2\times 2}\ i\alpha\vec{n}\cdot \vec{s}/\hbar$$
+
+		where $\alpha$ is the angle of rotation, $\vec{n}$ is the axis of rotation unit vector, and $\vec{s}$ is the spin spector.
+	 	
+	 	We can see how to turn this into a finite rotation $\rightarrow$ apply the rotation $N$ times for an arbitrarily large $N$
+	 	
+	 	\[ D(R) = \lim_{N\to\infty} \left( \mathbb{1} - \frac{i\alpha}{N}\ \vec{n}\cdot \frac{\vec{s}}{\hbar} \right)^N = \exp(-i\alpha\vec{n}\cdot\vec{s}/\hbar) \]
+	 	
+	 	As for a spin-1/2 particle $s$ has eigenvalues $\pm \hbar/2$ and $\vec{s}/\hbar = \frac{1}{2}\vec{\sigma}$
+	 	
+	 	the rotation \[ D(R) = \exp (\frac{-i\alpha\vec{n}\cdot \vec{\sigma}}{2}) \]
+	 	 
+	 	 \subsection*{Boosts}
+	 	 Let's suppose we apply a boost along the x-axis of pseudorapidity $\eta$, $\omega_{01} = -\omega{10} = \eta$ (where the velocity of the boost, $v = c \tanh \eta$)
+	 	 
+	 	 \[ M(\Lambda) = \mathbb{1}_{4\times 4} - \frac{i}{2} \omega_{\mu\nu} J^{\mu\nu} = 1-i\omega_{01} \bar{\mathcal{J}^{01}} \]
+	 	 
+	 	 In Dirac's construction, the $$\mathcal{J}^{0k} = S^{0k}  = -\frac{i}{4}[\gamma^0, \gamma^k]$$
+	 	 
+	 	 which we can evaluate to find are $$ -\frac{i}{2}\begin{pmatrix}
+	 	 	\sigma^k & 0 \\ 0 & -\sigma^k
+	 	 \end{pmatrix}$$
+	 	stemming from the product of two matrices $\gamma^0$ and $\gamma^k$ that themselves are zero-diagonal.\\
+	 	
+	 	From this, we clearly see that the boost generators are anti-Hermitian $S^{ij} = (-S^{ij})^\dagger$, as opposed to the ones for rotations, which were Hermitian.
+	 	
+	 	One can also verify that $$ (S^{\mu\nu})^\dagger = \gamma^0 S^{\mu\nu} \gamma^0, \quad \forall \mu, \nu$$
+	 	
+	 	{\color{red}$\rightarrow$} Ultimately, our goal is to construct a Lagrangian: $ \lag (\psi, \psi^\dagger)$ which is a Lorentz scalar.
+\end{document}
