@@ -55,9 +55,10 @@
 
 with \[ \Lambda^T g \Lambda = g, \quad g = \text{diag}(1, -1, -1, -1)	\]
 	
-	The proper orthochronous Lorentz group $\lag^+$ is a continuous, connected, 6-parameter group  (proper: $\det \Lambda = + 1$, orthochronous: $\Lambda^0_0 \geq 1 $)\\
+	The proper orthochronous Lorentz group $\lag^+$ (or $SO(1,3)^+$) is a continuous, connected, 6-parameter group (3 rotation directions, 3 boost directions).\\
+	Proper: $\det \Lambda = + 1, \rightarrow$ limits us to continuous tranformations (e.g. rotations, boosts) unlike time-reversal, parity (discrete). Orthochronous: $\Lambda^0_0 \geq 1, \rightarrow$ does not flip a forward-directed (in time) state into a backward-directed. \\
 	
-	3 rotation directions, 3 boost directions.\\ \vspace{-11pt}
+\vspace{-11pt}
 	{\hfill \color{VioletRed} \rule{0.5\textwidth}{0.4pt} \hfill }\\
 	
 	\noindent {\textcolor{VioletRed}{\large \bf My understanding:}}
@@ -78,7 +79,9 @@ with \[ \Lambda^T g \Lambda = g, \quad g = \text{diag}(1, -1, -1, -1)	\]
 	\vspace{-4pt}
 	This means that our transformations should form a group $G$. Whenever we have a ``continuous" group of the sorts involved here, it will follow the structure of a \textit{Lie algebra}. \vspace{4pt} \\
 	It should be possible to write every element of a \textit{Lie group} $g \in G$ as $g(\vec{\alpha}) = 1 + i\alpha^i T^i + O(\alpha^2)$, where the \textit{generators} of the group encode the algebra in their commutator
-	 $[T^i, T^j] = i f^{ijk} T^k$. The \textit{structure constant} $f^{ijk}$ in our cases will be $\epsilon^{ijk}$.\vspace{4pt} \\ Our job is then to find a \textit{representation} for our group appropriate for the objects we are dealing with (scalar, vector, or spinor fields).
+	 $[T^i, T^j] = i f^{ijk} T^k$. The \textit{structure constant} $f^{ijk}$ in our cases will be $\epsilon^{ijk}$.\vspace{4pt} \\ Our job is then to find a \textit{representation} for our group appropriate for the objects we are dealing with (scalar, vector, or spinor fields).\\
+	 
+	 %The subgroup being \textit{proper} ($\det \Lambda = 1$) picks out \textit{continuous} transformations (unlike discrete symmetries such as time reversal $T$ and parity transformation $P$). The condition of $\Lambda^0_0$ being positive (orthochronous) ensures that we only pick transformations that don't convert a forward-directed (in time) state to one being directed backwards. That is, one that doesn't flip a particle within the lightcone of $x-ct$ plane to the negative direction for $t$.
 	}
 
 	{\hfill \color{VioletRed} \rule{0.5\textwidth}{0.4pt} \hfill }\\
@@ -122,7 +125,7 @@ and here it serves as a generator  of a boost along the x-axis.
 
 In general \[ \Lambda^\alpha_\beta = \delta^\alpha_\beta - \frac{i}{2} \omega_{\mu\nu} (J^{\mu\nu})^\alpha_\beta\]
 
-where the $\omega_{\mu\nu} = - \omega_{\nu\mu}$ has the parameters of the infintesimal Lorentz transformation (6 indep. parameters)
+where the $\omega_{\mu\nu} = - \omega_{\nu\mu}$ are parameters of the infintesimal Lorentz transformation (6 indep. parameters, i.e. 6 numbers basically)
 
 and $(J^{\mu\nu})^\alpha_\beta$ is the corresponding generator to $\omega_{\mu\nu}$. \[ \exists\ \text{6  indep. generators} (J^{\nu\mu} = - J^{\mu\nu})\]
 
@@ -130,7 +133,13 @@ and $(J^{\mu\nu})^\alpha_\beta$ is the corresponding generator to $\omega_{\mu\n
 so we could have also written \[ \frac{1}{2} \sum_{\mu,\nu} \equiv \sum_{\mu < \nu} S_{\{\mu, \nu\}}\]	
 
 
-so what is this $(J^{\mu\nu})^\alpha_\beta$?
+so what is this $(J^{\mu\nu})^\alpha_\beta$? It's a rank-2 tensor, represented as a $16\times 16$ matrix \[J^{\mu\nu} = \begin{pmatrix}
+	0 & K_1 & K_2 & K_3\\
+	-K_1 & 0 & J_3 & -J_2\\
+	-K_2 & -J_3 & 0 & J_1\\
+	-K_3 & J_2 & -J_1 & 0
+\end{pmatrix}\]
+where the generators $J^i$ (rotations), $K^i$ (boosts) themselves are $4\times 4$ matrices. It is sometimes convenient to index\footnote{One should not confuse $J^i$ with $J^{\mu\nu}$, the notation is unfortunate. Schwartz uses a different letter $V^{\mu\nu}$ instead to side-step this.} $J^{\mu\nu}$ to write the commutation relations.
 
 \[ (J^{\mu\nu})^\alpha_\beta = i(g^{\mu\alpha} \delta ^\nu_\beta - g^{\nu\alpha} \delta^\mu_\beta) \]
 
@@ -163,7 +172,7 @@ and the $2\times2$ block is what we have to figure out
  \end{pmatrix}\]
  
  
- what does the $\omega_{12}$ correspond to? It corresponds to \[\omega_{12} = \alpha \quad \text{for the rotation around the z-axis}\]
+ what does the $\omega_{12}$ correspond to? It corresponds to \[\omega_{12} = \alpha, \quad \text{for the rotation around the z-axis (remember, $J^{12} = J^3$)}\]
  
  \vspace{-16pt}
  \[ \omega_{01} = \eta \quad \text{for the boost along x-axis}\]
@@ -189,14 +198,14 @@ and the $2\times2$ block is what we have to figure out
  
  $\rightarrow$ A boost and a rotation commute only if the axis of the rotation is also the direction of the boost. The boost doesn't affect the transverse plane.\\
 
-	This sort of transformation law for the field $\psi$ is called the \textit{representation} of the Lorentz group.
+	This sort of transformation law for the field $\psi$ is called the \textit{representation} of the Lorentz group\footnote{While it is said this way often, it's inaccurate to call $\psi$ to be the representation. It is $\mathcal{M}$ that is the embedding of the group here (see Chap 10, Schwartz, M.D. \textit{Quantum Field Theory and the Standard Model}).}.
 	
 	These are also relevant in condensed matter physics, when there are symmetries in a crystal, for instance. When there's a finite number of symmetry tranformations you can do, you come up with a \textit{representation} for a \textit{discrete group}.
 	
 	\section*{Representation of the Lorentz group}
 	
 	\[ \psi_\alpha '(x') = \mathcal{M}(\Lambda)_{\alpha\beta}\ \psi'_\beta (x')\]
-  This expresses that the field $\psi$ is a representation of the Lorentz group\\
+  This expresses that the field $\psi$ is a representation of the Lorentz group. Our $\mathcal{M}(\Lambda)$ serves as a guide of how Lorentz transformations affect the quantity $\psi$ (e.g. $\mathcal{M}(\Lambda) = 1$ if it's a scalar.)\\
   
 	suppose $\Lambda = \Lambda_1 \Lambda_2$ (composition of 2 Lorentz tranformations). If you do transformation $\Lambda_2$
 	
@@ -223,9 +232,9 @@ and the $2\times2$ block is what we have to figure out
 	
 	\boxed{\rightarrow \text{These will not do to describe the electron}} \footnote{Since rotations about axis $i$ are generated by the angular momentum operator $J^i$, a representation $D(\theta^i) = e^{-i\hat{J}^i\theta^i}$ should recover $J^i = -\frac{1}{i} \frac{\partial}{\partial \theta^i}D(\theta^i)$. For an electron this needs to be something that recovers $J^i = \pm 1/2$ in units of $\hbar$. A good example is $\frac{1}{2}\sigma^i$ where $\sigma^i$ are the Pauli matrices.}\\
 	
-	For an infinitesimal transformation, we can expect that \[ \mathcal{M}(\Lambda) = \mathbb{1} - \frac{i}{2} \omega_{\mu\nu} \bar{\mathcal{J}}^{\mu\nu} \] 
+	For an infinitesimal transformation, we can expect to find a set of generators $\bar{\mathcal{J}}^{\mu\nu}$ \[ \mathcal{M}(\Lambda) = \mathbb{1} - \frac{i}{2} \omega_{\mu\nu} \bar{\mathcal{J}}^{\mu\nu} \] 
 
-	$\rightarrow$ the $\bar{\mathcal{J}}^{\mu\nu}$ have the same commutation relations as the $J^{\mu\nu}$'s\\
+	where the $\bar{\mathcal{J}}^{\mu\nu}$ have the same commutation relations as the $J^{\mu\nu}$'s\\
 
 	Now we come to one thing that we know about the electron (spin-1/2). Spin is about angular momentum, which has to do with spatial rotations. So we know something about how electron transforms under rotations just from that it has spin-1/2.\\
 
@@ -233,9 +242,9 @@ and the $2\times2$ block is what we have to figure out
 	
 	\[ J^{ij} = \frac{1}{\hbar}\epsilon^{ijk} S^{k}\]
 
-for angular momenta, commutation relations: \[ [S^i, S^j] = i \hbar \epsilon^{ijk} S^k\]
+for spin angular momenta themselves, the following hold commutation relations: \[ [S^i, S^j] = i \hbar \epsilon^{ijk} S^k\]
 
-	In spin-1/2 we use Pauli matrices. \[ S^k = \hbar \frac{\sigma^k}{2}\]
+	for the case of spin-1/2 we use Pauli matrices to express these. \[ S^k = \hbar \frac{\sigma^k}{2}\]
 	
 	where the $\sigma^k$ are Pauli matrices
 	
@@ -247,7 +256,7 @@ for angular momenta, commutation relations: \[ [S^i, S^j] = i \hbar \epsilon^{ij
 1 & 0 \\ 0 & -1
 \end{pmatrix}\]
 
-For the rotations, this already tells us what the answer is of what the $\bar{\mathcal{J}}^{ij}$ should be. When it came to including boosts, it was Dirac who had the brilliant idea
+For the rotations, this already tells us what the answer is of what the $\bar{\mathcal{J}}^{ij}$ should be, and we have found a form for its generators. When it came to including boosts in this picture, it was Dirac who had the brilliant idea
 
 \section*{Dirac construction of a representation for the electron}
 

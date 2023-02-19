@@ -67,8 +67,9 @@
 		
 		A Lorentz covariant four-vector thus satisfies \[ x'^{\rho} = \Lambda^\rho_\sigma x^\sigma\] 
 		
-		The generators of our infiniteismal Lorentz transformations \[ J^{\mu\nu} = -J^{\mu\nu}\] (principal diagonal elements must be all $0$) satisfy certain commutation relations 
-		$[ J^{\mu\nu} , J^{\rho\sigma} ]$ are equal to some linear combination of $J^{\alpha\beta}$ (i.e. are elements of the same vector space) such that they form an \textit{algebra} \footnote{An {\it algebra} is a vector space equipped with a bilinear product.} of the generators.\\ 
+		The generators of our infiniteismal Lorentz transformations \[ J^{\mu\nu} = -J^{\nu\mu}\] (principal diagonal elements must be all $0$) satisfy certain commutation relations \\
+		
+		$[ J^{\mu\nu} , J^{\rho\sigma} ]$ are equal to some linear combination of\footnote{The generators $J^i$, $K^i$ (or if you prefer $J^{\mu\nu}$) serve as basis vectors and span the space of all possible transformations.} $J^{\alpha\beta}$ (i.e. are elements of the same vector space) such that they form an \textit{algebra} \footnote{An {\it algebra} is a vector space equipped with a bilinear product.} of the generators.\\ 
 	
 	
 A spinor field $\psi_\alpha(x):\ \psi'_\alpha(x') = M(\Lambda)_{\alpha\beta}\psi_\beta(x)$.
@@ -76,7 +77,7 @@ A spinor field $\psi_\alpha(x):\ \psi'_\alpha(x') = M(\Lambda)_{\alpha\beta}\psi
 
 Dirac's proposal for the anticommuting gamma matrices $\gamma^\mu$, that satisfy \[ \{\gamma^\mu, \gamma_\nu\} = 2g^{\mu\nu} \mathbb{1}_{n\times n}\]
 
-		It is then posited that one can find generators that can be constructed from these matrices\[ \S^{\mu\nu} = \frac{i}{4} [\gamma^\mu, \gamma^\nu] = -S^{\nu\mu}\] which also satisfy the commutation relations appropriate for the Lorentz group. That is to say $S^{\mu\nu}$ are a specific example of what $\mathcal{J}^{\mu\nu}$ can be.
+		It is then posited that one can find generators that can be constructed from these matrices\[ S^{\mu\nu} = \frac{i}{4} [\gamma^\mu, \gamma^\nu] = -S^{\nu\mu}\] which also satisfy the commutation relations appropriate for the Lorentz group. That is to say $S^{\mu\nu}$ are a specific example of what $\mathcal{J}^{\mu\nu}$ can be (here, rotations for a spinor field).
 		
 		\subsection*{Specific realization of Dirac's matrices}
 		
@@ -124,7 +125,7 @@ Dirac's proposal for the anticommuting gamma matrices $\gamma^\mu$, that satisfy
 		 \[ M(\Lambda(\omega)) = \mathbb{1}_{4 \times 4} - \frac{i}{2}\omega_{ij}S^{ij} \]
 		 
 		 
-		if we are to rotate by an angle $\alpha$ in the xy-plane for example, $\omega_{12} =- \omega{21} = \alpha$, then the $\frac{1}{2} \omega_{ij}\epsilon^{ijk} = \alpha \delta^{kz}$.
+		if we are to rotate by an angle $\alpha$ in the xy-plane for example, $\omega_{12} =- \omega_{21} = \alpha$, then the $\frac{1}{2} \omega_{ij}\epsilon^{ijk} = \alpha \delta^{kz}$.
 		
 		and the representation \[ M(\Lambda(\omega)) = \mathbb{1}_{4\times 4} - \frac{i}{2} \alpha \Sigma^z\]
 		
@@ -157,14 +158,15 @@ Dirac's proposal for the anticommuting gamma matrices $\gamma^\mu$, that satisfy
 	 	
 	 	We can see how to turn this into a finite rotation $\rightarrow$ apply the rotation $N$ times for an arbitrarily large $N$
 	 	
-	 	\[ D(R) = \lim_{N\to\infty} \left( \mathbb{1} - \frac{i\alpha}{N}\ \vec{n}\cdot \frac{\vec{s}}{\hbar} \right)^N = \exp(-i\alpha\vec{n}\cdot\vec{s}/\hbar) \]
+	 	\[ D(R) = \lim_{N\to\infty} \left( \mathbb{1} - \frac{i\alpha}{N}\ \frac{\vec{n}
+	 		\cdot \vec{s}}{\hbar} \right)^N = \exp(-i\alpha\vec{n}\cdot\vec{s}/\hbar) \]
 	 	
 	 	As for a spin-1/2 particle $s$ has eigenvalues $\pm \hbar/2$ and $\vec{s}/\hbar = \frac{1}{2}\vec{\sigma}$
 	 	
 	 	the rotation \[ D(R) = \exp (\frac{-i\alpha\vec{n}\cdot \vec{\sigma}}{2}) \]
 	 	 
 	 	 \subsection*{Boosts}
-	 	 Let's suppose we apply a boost along the x-axis of pseudorapidity $\eta$, $\omega_{01} = -\omega{10} = \eta$ (where the velocity of the boost, $v = c \tanh \eta$)
+	 	 Let's suppose we apply a boost along the x-axis of pseudorapidity $\eta$, $\omega_{01} = -\omega^{10} = \eta$ (where the velocity of the boost, $v = c \tanh \eta$)
 	 	 
 	 	 \[ M(\Lambda) = \mathbb{1}_{4\times 4} - \frac{i}{2} \omega_{\mu\nu} J^{\mu\nu} = 1-i\omega_{01} \bar{\mathcal{J}^{01}} \]
 	 	 
