@@ -51,24 +51,25 @@
 		\begin{center}
 			\boxed{(p\cdot \gamma) (k\cdot \gamma) = (p\cdot k) \mathbb{1}_{4\times 4}}
 		\end{center}
-	\subsection*{Hamiltonian for the Dirac field: $\bar{\psi}\equiv \psi^+\gamma^0$}
+	\subsection*{Hamiltonian for the Dirac field: $\bar{\psi}\equiv \psi^\dagger\gamma^0$}
 	
-	\[ \frac{\partial \lag}{\partial \psi_\alpha} = \frac{1}{c} \psi^+_\alpha = \Pi_\alpha, \quad \underbrace{(\ ... \ )}_{\bar{\psi}} \begin{pmatrix} .. & . & . & . \\ : &  & & : \\
+	\[ \frac{\partial \lag}{\partial \psi_\alpha} = \frac{1}{c} \psi^\dagger_\alpha = \Pi_\alpha, \quad \underbrace{(\ ... \ )}_{\bar{\psi}} \begin{pmatrix} .. & . & . & . \\ : &  & & : \\
 			. &  & & .\\ 
 			. & & & .\end{pmatrix}
 		\underbrace{\begin{pmatrix}
 				: \\ .\\. \\.
 		\end{pmatrix}}_{\psi} \]
 	
-	
+	We obtain the Hamiltonian by the Legendre tranformation $\ham = \sum_\alpha \left( \Pi^0_\alpha \dot{\psi_\alpha} \right) - \lag$. In our case, since $\Pi^0$ for $\bar{\psi}$ is 0, the summation only the one corresponding to $\psi$ appears in the expression.
 	\begin{align*}
-		\ham &= \int d^3 \vec{x} \left( \frac{i}{c}\psi^\dagger_\alpha \dot{\psi}_\alpha - \lag \right)\\
-			& = \int d^3 \vec{x} \left( \cancel{ \frac{i}{c}\psi^+ \dot{\psi} }- (  \cancel{ \bar{\psi}i\gamma^0 \partial_0\psi } + \bar{\psi} i \gamma^k \partial_k \psi - \kappa \bar{\psi} \psi) \right)\\
-		\ham &= \int d^3 \vec{x}\ \bar{\psi} (-i\vec{\gamma}\cdot \vec{\nabla} + \kappa)\psi, \quad \vec{\gamma} = \begin{pmatrix}
-			\gamma^1 \\ \gamma^2 \\ \gamma^3
-		\end{pmatrix} = -\vec{\gamma}^+
+		H &= \int d^3 \vec{x} \left( \frac{i}{c}\psi^\dagger_\alpha \dot{\psi}_\alpha - \lag \right)\\
+			& = \int d^3 \vec{x} \left( \cancel{ \frac{i}{c}\psi^\dagger \dot{\psi} }- (  \cancel{ \bar{\psi}i\gamma^0 \partial_0\psi } + \bar{\psi} i \gamma^k \partial_k \psi - \kappa \bar{\psi} \psi) \right)\\
+		H &= \int d^3 \vec{x}\ \bar{\psi} (-i\vec{\gamma}\cdot \vec{\nabla} + \kappa)\psi, \quad \text{with}\ \vec{\gamma} = (\gamma^1, \gamma^2, \gamma^3)^T = -\vec{\gamma}^\dagger
 	\end{align*}
-	
+	from the Dirac equation itself $i\gamma^0\partial_0 = -i\vec{\gamma}\cdot\vec{\nabla} + \kappa$, the Hamiltonian is simplified to (also using $\bar{\psi}\gamma^0 = \psi^\dagger \gamma^0 \gamma^0 = \psi^\dagger)$
+	\begin{center}
+		\boxed{H = \int d^3\vec{x}\ i\psi^\dagger \dot{\psi}}
+	\end{center}
 	
 	
 	\section*{Solving the Dirac equation in vacuum}
